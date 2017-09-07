@@ -1,0 +1,227 @@
+heat_template_version: 20130523
+
+description: >
+    Create the cloudlet VMS.
+
+parameters:
+  external_network:
+    type: string
+#    default: public
+
+  image_controller:
+    type: string
+#    default: cirros-0.3.4-x86_64-uec
+
+  image_compute:
+    type: string
+#    default: cirros-0.3.4-x86_64-uec
+
+  image_service:
+    type: string
+#    default: cirros-0.3.4-x86_64-uec
+
+  flavor_controller:
+    type: string
+#    default: 1
+
+  flavor_compute:
+    type: string
+#    default: 1
+
+  flavor_service:
+    type: string
+#    default: 1
+
+  availability_zone:
+    type: string
+    description: The Availability Zone to launch the instance.
+    default: nova
+
+  volume_size:
+    type: number
+    description: Size of the volume to be created.
+    default: 1
+    constraints:
+      - range: { min: 1, max: 1024 }
+        description: must be between 1 and 1024 Gb.
+
+resources:
+  client_data_network:
+    type: OS::Neutron::Net
+    properties:
+      name: client_data_network
+
+  client_data_subnet:
+    type: OS::Neutron::Subnet
+    properties:
+      cidr: 10.1.1.0/24
+      network: { get_resource: client_data_network }
+
+ # Create router for testlab
+  cloudlet_router:
+    type: OS::Neutron::Router
+    properties:
+      name: cloudlet-router
+      external_gateway_info:
+        network: { get_param: external_network }
+
+ # Connect networks to router interface
+  client_data_router_interface:
+    type: OS::Neutron::RouterInterface
+    properties:
+      router: { get_resource: cloudlet_router }
+      subnet: { get_resource: client_data_subnet }
+
+  mec_secgroup:
+    type: OS::Neutron::SecurityGroup
+    properties:
+      name: mec_sg
+      description: Ping and SSH
+      rules:
+        - protocol: icmp
+        - protocol: tcp
+          port_range_min: 22
+          port_range_max: 22
+        - protocol: tcp
+          port_range_min: 5000
+          port_range_max: 5000
+
+  controller_port:
+    type: OS::Neutron::Port
+    properties:
+      network: { get_resource: client_data_network }
+      fixed_ips:
+        - subnet_id: { get_resource: client_data_subnet }
+      security_groups: [{ get_resource: mec_secgroup }]
+
+  compute_port:
+    type: OS::Neutron::Port
+    properties:
+      network: { get_resource: client_data_network }
+      fixed_ips:
+        - subnet_id: { get_resource: client_data_subnet }
+      security_groups: [{ get_resource: mec_secgroup }]
+
+  service_port:
+    type: OS::Neutron::Port
+    properties:
+      network: { get_resource: client_data_network }
+      fixed_ips:
+        - subnet_id: { get_resource: client_data_subnet }
+      security_groups: [{ get_resource: mec_secgroup }]
+
+  floating_ip_controller:
+    type: OS::Neutron::FloatingIP
+    properties:
+      floating_network: { get_param: external_network }
+      port_id: { get_resource: controller_port }
+
+  instance_controller:
+    type: OS::Nova::Server
+    properties:
+      name: cloudlet_controller
+      image: { get_param: image_controller }
+      flavor: { get_param: flavor_controller }
+      availability_zone: { get_param: availability_zone }
+      networks:
+        - port: { get_resource: controller_port }
+    depends_on: [ client_data_subnet, client_data_router_interface, floating_ip_controller, cinder_volume_controller ]
+
+  cinder_volume_controller:
+    type: OS::Cinder::Volume
+    properties:
+      size: { get_param: volume_size }
+      availability_zone: { get_param: availability_zone }
+
+  volume_attachment_controller:
+    type: OS::Cinder::VolumeAttachment
+    properties:
+      volume_id: { get_resource: cinder_volume_controller }
+      instance_uuid: { get_resource: instance_controller }
+      mountpoint: /dev/vdb
+
+  floating_ip_compute:
+    type: OS::Neutron::FloatingIP
+    properties:
+      floating_network: { get_param: external_network }
+      port_id: { get_resource: compute_port }
+
+  instance_compute:
+    type: OS::Nova::Server
+    properties:
+      name: cloudlet_compute
+      image: { get_param: image_compute }
+      flavor: { get_param: flavor_compute }
+      availability_zone: { get_param: availability_zone }
+      networks:
+        - port: { get_resource: compute_port }
+    depends_on: [ client_data_subnet, client_data_router_interface, floating_ip_compute, cinder_volume_compute ]
+
+  cinder_volume_compute:
+    type: OS::Cinder::Volume
+    properties:
+      size: { get_param: volume_size }
+      availability_zone: { get_param: availability_zone }
+
+  volume_attachment_compute:
+    type: OS::Cinder::VolumeAttachment
+    properties:
+      volume_id: { get_resource: cinder_volume_compute }
+      instance_uuid: { get_resource: instance_compute }
+      mountpoint: /dev/vdb
+
+  floating_ip_service:
+    type: OS::Neutron::FloatingIP
+    properties:
+      floating_network: { get_param: external_network }
+      port_id: { get_resource: service_port }
+
+  instance_service:
+    type: OS::Nova::Server
+    properties:
+      name: cloudlet_service
+      image: { get_param: image_service }
+      flavor: { get_param: flavor_service }
+      availability_zone: { get_param: availability_zone }
+      networks:
+        - port: { get_resource: service_port }
+    depends_on: [ client_data_subnet, client_data_router_interface, floating_ip_service, cinder_volume_service ]
+
+  cinder_volume_service:
+    type: OS::Cinder::Volume
+    properties:
+      size: { get_param: volume_size }
+      availability_zone: { get_param: availability_zone }
+
+  volume_attachment_service:
+    type: OS::Cinder::VolumeAttachment
+    properties:
+      volume_id: { get_resource: cinder_volume_service }
+      instance_uuid: { get_resource: instance_service }
+      mountpoint: /dev/vdb
+
+outputs:
+  controller_private_ip:
+    description: Private IP address of the controller
+    value: { get_attr: [instance_controller, first_address] }
+
+  controller_ip:
+    description: IP address of the controller
+    value: { get_attr: [floating_ip_controller, floating_ip_address] }
+
+
+  compute_private_ip:
+    description: Private IP address of the controller
+    value: { get_attr: [instance_compute, first_address] }
+
+  compute_ip:
+    description: IP address of the compute
+    value: { get_attr: [floating_ip_compute, floating_ip_address] }
+
+  service_private_ip:
+    description: Private IP address of the service
+    value: { get_attr: [instance_service, first_address] }
+
+  service_ip:
+    description: IP address of the service
+    value: { get_attr: [floating_ip_service, floating_ip_address] }

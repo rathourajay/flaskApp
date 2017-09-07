@@ -1,0 +1,32 @@
+TODO:
+Maintain a local file to store cloudlet capacity. 
+
+client lat long
+
+cloudlets lat long
+
+check each cloudlet's resource availability on the basis of required by app to host
+
+create a list of available cloudlets
+
+do compare each cloudlet's lat long with client lat long
+
+calculate and return top 3 lesser in distance
+
+ERRORs : 404,405,503
+
+QUERIES::
+Where are Cloudlet IPs?
+
+In MS requeirement what are: "slices": 1, "block": 0, "kv": 0, "bandwidth": 0.1
+Are these the app requirements??
+
+Does cloudlet policiy file contain the following ?
+"cloudlets": {
+    "ens.aws-us-east.edgenet.cloud": {
+      "regions": {"all": ["NA", "SA", "OC"], "low-latency": ["NA", "SA"]}
+    },
+    "ens.aws-us-west.edgenet.cloud": {
+      "regions": {"all": [], "low-latency": ["NA", "SA"]}
+    },
+ }

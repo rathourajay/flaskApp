@@ -1,0 +1,181 @@
+[2017-03-07 11:19:21,121] INFO [logger.py:69] - Logger Initialized
+[2017-03-07 11:19:55,171] INFO [logger.py:69] - Logger Initialized
+[2017-03-07 11:20:46,566] INFO [logger.py:69] - Logger Initialized
+[2017-03-07 11:21:47,930] INFO [logger.py:69] - Logger Initialized
+[2017-03-07 11:23:03,032] INFO [logger.py:69] - Logger Initialized
+[2017-03-07 11:23:03,032] INFO [logger.py:69] - Registering DiscoveryServer reachable at http://localhost:60678/api/v1.0/discover/
+[2017-03-07 11:23:03,032] INFO [logger.py:69] - Logging in
+[2017-03-07 11:23:03,032] DEBUG [logger.py:97] - cloud_api_admin logging in
+[2017-03-07 11:23:05,058] ERROR [logger.py:83] - Login request failed due to connection error: HTTPConnectionPool(host='localhost', port=60609): Max retries exceeded with url: /auth/v1.5/oauth/login (Caused by NewConnectionError('<requests.packages.urllib3.connection.HTTPConnection object at 0x02DF3ED0>: Failed to establish a new connection: [Errno 10061] No connection could be made because the target machine actively refused it',)).
+[2017-03-07 11:23:05,058] ERROR [logger.py:83] - Registration Failed to login failure
+[2017-03-07 11:26:36,871] INFO [logger.py:69] - Logger Initialized
+[2017-03-07 11:26:36,871] INFO [logger.py:69] - Registering DiscoveryServer reachable at http://localhost:60678/api/v1.0/discover/
+[2017-03-07 11:26:36,881] INFO [logger.py:69] - Logging in
+[2017-03-07 11:26:36,881] DEBUG [logger.py:97] - cloud_api_admin logging in
+[2017-03-07 11:26:38,901] ERROR [logger.py:83] - Login request failed due to connection error: HTTPConnectionPool(host='localhost', port=60609): Max retries exceeded with url: /auth/v1.5/oauth/login (Caused by NewConnectionError('<requests.packages.urllib3.connection.HTTPConnection object at 0x02EB3ED0>: Failed to establish a new connection: [Errno 10061] No connection could be made because the target machine actively refused it',)).
+[2017-03-07 11:26:38,901] ERROR [logger.py:83] - Registration Failed to login failure
+[2017-03-07 11:29:03,437] INFO [logger.py:69] - Logger Initialized
+[2017-03-07 11:29:03,447] INFO [logger.py:69] - Registering DiscoveryServer reachable at http://localhost:60678/api/v1.0/discover/
+[2017-03-07 11:29:03,447] INFO [logger.py:69] - Logging in
+[2017-03-07 11:29:03,447] DEBUG [logger.py:97] - cloud_api_admin logging in
+[2017-03-07 11:29:05,477] ERROR [logger.py:83] - Login request failed due to connection error: HTTPConnectionPool(host='localhost', port=60609): Max retries exceeded with url: /auth/v1.5/oauth/login (Caused by NewConnectionError('<requests.packages.urllib3.connection.HTTPConnection object at 0x02D23ED0>: Failed to establish a new connection: [Errno 10061] No connection could be made because the target machine actively refused it',)).
+[2017-03-07 11:29:05,477] ERROR [logger.py:83] - Registration Failed to login failure
+[2017-03-07 11:31:14,476] INFO [logger.py:69] - Logger Initialized
+[2017-03-07 11:31:14,486] INFO [logger.py:69] - Registering DiscoveryServer reachable at http://localhost:60678/api/v1.0/discover/
+[2017-03-07 11:31:14,486] INFO [logger.py:69] - Logging in
+[2017-03-07 11:31:14,486] DEBUG [logger.py:97] - cloud_api_admin logging in
+[2017-03-07 11:31:15,506] INFO [logger.py:69] - Login Successful
+[2017-03-07 11:31:15,506] DEBUG [logger.py:97] - OAuth Token created with token:abcd, refresh token:pqrs, expiry:10, status:True, error code:1000, error message:No Error
+[2017-03-07 11:31:16,517] INFO [logger.py:69] - Registration Successful
+[2017-03-07 11:31:16,517] INFO [logger.py:69] - Token refresh timer started. Refresh will be attempted every 5 sec.
+[2017-03-07 11:31:21,525] INFO [logger.py:69] - Attempting Token Refreshing
+[2017-03-07 11:31:21,525] INFO [logger.py:69] - Refreshing token
+[2017-03-07 11:31:21,525] DEBUG [logger.py:97] - Attempting token refresh with pqrs
+[2017-03-07 11:31:22,536] INFO [logger.py:69] - Token Refresh Successful
+[2017-03-07 11:31:22,536] DEBUG [logger.py:97] - OAuth Token created with token:qwerty, refresh token:poiu, expiry:20, status:True, error code:1000, error message:No Error
+[2017-03-07 11:31:22,536] INFO [logger.py:69] - Token refresh timer started. Refresh will be attempted every 15 sec.
+[2017-03-07 11:31:22,536] INFO [logger.py:69] - Token Refresh Completed
+[2017-03-07 11:31:37,546] INFO [logger.py:69] - Attempting Token Refreshing
+[2017-03-07 11:31:37,546] INFO [logger.py:69] - Refreshing token
+[2017-03-07 11:31:37,546] DEBUG [logger.py:97] - Attempting token refresh with poiu
+[2017-03-07 11:31:38,549] INFO [logger.py:69] - Token Refresh Successful
+[2017-03-07 11:31:38,549] DEBUG [logger.py:97] - OAuth Token created with token:qwerty, refresh token:poiu, expiry:20, status:True, error code:1000, error message:No Error
+[2017-03-07 11:31:38,549] INFO [logger.py:69] - Token refresh timer started. Refresh will be attempted every 15 sec.
+[2017-03-07 11:31:38,549] INFO [logger.py:69] - Token Refresh Completed
+[2017-03-07 11:31:53,553] INFO [logger.py:69] - Attempting Token Refreshing
+[2017-03-07 11:31:53,553] INFO [logger.py:69] - Refreshing token
+[2017-03-07 11:31:53,553] DEBUG [logger.py:97] - Attempting token refresh with poiu
+[2017-03-07 11:31:54,555] INFO [logger.py:69] - Token Refresh Successful
+[2017-03-07 11:31:54,555] DEBUG [logger.py:97] - OAuth Token created with token:qwerty, refresh token:poiu, expiry:20, status:True, error code:1000, error message:No Error
+[2017-03-07 11:31:54,555] INFO [logger.py:69] - Token refresh timer started. Refresh will be attempted every 15 sec.
+[2017-03-07 11:31:54,555] INFO [logger.py:69] - Token Refresh Completed
+[2017-03-07 11:32:09,559] INFO [logger.py:69] - Attempting Token Refreshing
+[2017-03-07 11:32:09,559] INFO [logger.py:69] - Refreshing token
+[2017-03-07 11:32:09,559] DEBUG [logger.py:97] - Attempting token refresh with poiu
+[2017-03-07 11:32:10,573] INFO [logger.py:69] - Token Refresh Successful
+[2017-03-07 11:32:10,573] DEBUG [logger.py:97] - OAuth Token created with token:qwerty, refresh token:poiu, expiry:20, status:True, error code:1000, error message:No Error
+[2017-03-07 11:32:10,573] INFO [logger.py:69] - Token refresh timer started. Refresh will be attempted every 15 sec.
+[2017-03-07 11:32:10,573] INFO [logger.py:69] - Token Refresh Completed
+[2017-03-07 11:32:25,573] INFO [logger.py:69] - Attempting Token Refreshing
+[2017-03-07 11:32:25,573] INFO [logger.py:69] - Refreshing token
+[2017-03-07 11:32:25,573] DEBUG [logger.py:97] - Attempting token refresh with poiu
+[2017-03-07 11:32:26,586] INFO [logger.py:69] - Token Refresh Successful
+[2017-03-07 11:32:26,586] DEBUG [logger.py:97] - OAuth Token created with token:qwerty, refresh token:poiu, expiry:20, status:True, error code:1000, error message:No Error
+[2017-03-07 11:32:26,588] INFO [logger.py:69] - Token refresh timer started. Refresh will be attempted every 15 sec.
+[2017-03-07 11:32:26,588] INFO [logger.py:69] - Token Refresh Completed
+[2017-03-07 11:32:41,588] INFO [logger.py:69] - Attempting Token Refreshing
+[2017-03-07 11:32:41,588] INFO [logger.py:69] - Refreshing token
+[2017-03-07 11:32:41,588] DEBUG [logger.py:97] - Attempting token refresh with poiu
+[2017-03-07 11:32:42,601] INFO [logger.py:69] - Token Refresh Successful
+[2017-03-07 11:32:42,601] DEBUG [logger.py:97] - OAuth Token created with token:qwerty, refresh token:poiu, expiry:20, status:True, error code:1000, error message:No Error
+[2017-03-07 11:32:42,601] INFO [logger.py:69] - Token refresh timer started. Refresh will be attempted every 15 sec.
+[2017-03-07 11:32:42,601] INFO [logger.py:69] - Token Refresh Completed
+[2017-03-07 11:32:57,601] INFO [logger.py:69] - Attempting Token Refreshing
+[2017-03-07 11:32:57,601] INFO [logger.py:69] - Refreshing token
+[2017-03-07 11:32:57,601] DEBUG [logger.py:97] - Attempting token refresh with poiu
+[2017-03-07 11:32:58,611] INFO [logger.py:69] - Token Refresh Successful
+[2017-03-07 11:32:58,611] DEBUG [logger.py:97] - OAuth Token created with token:qwerty, refresh token:poiu, expiry:20, status:True, error code:1000, error message:No Error
+[2017-03-07 11:32:58,611] INFO [logger.py:69] - Token refresh timer started. Refresh will be attempted every 15 sec.
+[2017-03-07 11:32:58,611] INFO [logger.py:69] - Token Refresh Completed
+[2017-03-07 11:33:13,611] INFO [logger.py:69] - Attempting Token Refreshing
+[2017-03-07 11:33:13,611] INFO [logger.py:69] - Refreshing token
+[2017-03-07 11:33:13,611] DEBUG [logger.py:97] - Attempting token refresh with poiu
+[2017-03-07 11:33:14,619] INFO [logger.py:69] - Token Refresh Successful
+[2017-03-07 11:33:14,621] DEBUG [logger.py:97] - OAuth Token created with token:qwerty, refresh token:poiu, expiry:20, status:True, error code:1000, error message:No Error
+[2017-03-07 11:33:14,621] INFO [logger.py:69] - Token refresh timer started. Refresh will be attempted every 15 sec.
+[2017-03-07 11:33:14,621] INFO [logger.py:69] - Token Refresh Completed
+[2017-03-07 11:33:29,621] INFO [logger.py:69] - Attempting Token Refreshing
+[2017-03-07 11:33:29,621] INFO [logger.py:69] - Refreshing token
+[2017-03-07 11:33:29,621] DEBUG [logger.py:97] - Attempting token refresh with poiu
+[2017-03-07 11:33:30,627] INFO [logger.py:69] - Token Refresh Successful
+[2017-03-07 11:33:30,628] DEBUG [logger.py:97] - OAuth Token created with token:qwerty, refresh token:poiu, expiry:20, status:True, error code:1000, error message:No Error
+[2017-03-07 11:33:30,628] INFO [logger.py:69] - Token refresh timer started. Refresh will be attempted every 15 sec.
+[2017-03-07 11:33:30,628] INFO [logger.py:69] - Token Refresh Completed
+[2017-03-07 11:33:58,203] INFO [logger.py:69] - Logger Initialized
+[2017-03-07 11:33:58,210] INFO [logger.py:69] - Registering DiscoveryServer reachable at http://localhost:60678/api/v1.0/discover/
+[2017-03-07 11:33:58,210] INFO [logger.py:69] - Logging in
+[2017-03-07 11:33:58,210] DEBUG [logger.py:97] - cloud_api_admin logging in
+[2017-03-07 11:33:59,232] INFO [logger.py:69] - Login Successful
+[2017-03-07 11:33:59,232] DEBUG [logger.py:97] - OAuth Token created with token:abcd, refresh token:pqrs, expiry:10, status:True, error code:1000, error message:No Error
+[2017-03-07 11:34:00,242] INFO [logger.py:69] - Registration Successful
+[2017-03-07 11:34:00,243] INFO [logger.py:69] - Token refresh timer started. Refresh will be attempted every 5 sec.
+[2017-03-07 11:34:05,243] INFO [logger.py:69] - Attempting Token Refreshing
+[2017-03-07 11:34:05,243] INFO [logger.py:69] - Refreshing token
+[2017-03-07 11:34:05,243] DEBUG [logger.py:97] - Attempting token refresh with pqrs
+[2017-03-07 11:34:06,253] INFO [logger.py:69] - Token Refresh Successful
+[2017-03-07 11:34:06,255] DEBUG [logger.py:97] - OAuth Token created with token:qwerty, refresh token:poiu, expiry:2000, status:True, error code:1000, error message:No Error
+[2017-03-07 11:34:06,256] INFO [logger.py:69] - Token refresh timer started. Refresh will be attempted every 1995 sec.
+[2017-03-07 11:34:06,256] INFO [logger.py:69] - Token Refresh Completed
+[2017-03-07 11:44:28,644] INFO [logger.py:69] - Logger Initialized
+[2017-03-07 11:44:28,651] INFO [logger.py:69] - Registering DiscoveryServer reachable at http://localhost:60678/api/v1.0/discover/
+[2017-03-07 11:44:28,651] INFO [logger.py:69] - Logging in
+[2017-03-07 11:44:28,651] DEBUG [logger.py:97] - cloud_api_admin logging in
+[2017-03-07 11:44:29,671] INFO [logger.py:69] - Login Successful
+[2017-03-07 11:44:29,671] DEBUG [logger.py:97] - OAuth Token created with token:abcd, refresh token:pqrs, expiry:10, status:True, error code:1000, error message:No Error
+[2017-03-07 11:44:30,680] INFO [logger.py:69] - Registration Successful
+[2017-03-07 11:44:30,681] INFO [logger.py:69] - Token refresh timer started. Refresh will be attempted every 5 sec.
+[2017-03-07 11:44:35,681] INFO [logger.py:69] - Attempting Token Refreshing
+[2017-03-07 11:44:35,681] INFO [logger.py:69] - Refreshing token
+[2017-03-07 11:44:35,681] DEBUG [logger.py:97] - Attempting token refresh with pqrs
+[2017-03-07 11:44:36,703] INFO [logger.py:69] - Token Refresh Successful
+[2017-03-07 11:44:36,703] DEBUG [logger.py:97] - OAuth Token created with token:qwerty, refresh token:poiu, expiry:2000, status:True, error code:1000, error message:No Error
+[2017-03-07 11:44:36,703] INFO [logger.py:69] - Token refresh timer started. Refresh will be attempted every 1995 sec.
+[2017-03-07 11:44:36,703] INFO [logger.py:69] - Token Refresh Completed
+[2017-03-07 11:49:28,526] INFO [logger.py:69] - Logger Initialized
+[2017-03-07 11:49:28,532] INFO [logger.py:69] - Registering DiscoveryServer reachable at http://localhost:60678/api/v1.0/discover/
+[2017-03-07 11:49:28,532] INFO [logger.py:69] - Logging in
+[2017-03-07 11:49:28,532] DEBUG [logger.py:97] - cloud_api_admin logging in
+[2017-03-07 11:49:29,556] INFO [logger.py:69] - Login Successful
+[2017-03-07 11:49:29,556] DEBUG [logger.py:97] - OAuth Token created with token:abcd, refresh token:pqrs, expiry:10, status:True, error code:1000, error message:No Error
+[2017-03-07 11:49:30,563] INFO [logger.py:69] - Registration Successful
+[2017-03-07 11:49:30,565] INFO [logger.py:69] - Token refresh timer started. Refresh will be attempted every 5 sec.
+[2017-03-07 11:49:35,565] INFO [logger.py:69] - Attempting Token Refreshing
+[2017-03-07 11:49:35,565] INFO [logger.py:69] - Refreshing token
+[2017-03-07 11:49:35,565] DEBUG [logger.py:97] - Attempting token refresh with pqrs
+[2017-03-07 11:49:36,576] INFO [logger.py:69] - Token Refresh Successful
+[2017-03-07 11:49:36,578] DEBUG [logger.py:97] - OAuth Token created with token:qwerty, refresh token:poiu, expiry:2000, status:True, error code:1000, error message:No Error
+[2017-03-07 11:49:36,578] INFO [logger.py:69] - Token refresh timer started. Refresh will be attempted every 1995 sec.
+[2017-03-07 11:49:36,578] INFO [logger.py:69] - Token Refresh Completed
+[2017-03-07 11:54:30,568] INFO [logger.py:69] - Logger Initialized
+[2017-03-07 11:54:30,573] INFO [logger.py:69] - Registering DiscoveryServer reachable at http://localhost:60678/api/v1.0/discover/
+[2017-03-07 11:54:30,573] INFO [logger.py:69] - Logging in
+[2017-03-07 11:54:30,573] DEBUG [logger.py:97] - cloud_api_admin logging in
+[2017-03-07 11:54:31,595] INFO [logger.py:69] - Login Successful
+[2017-03-07 11:54:31,595] DEBUG [logger.py:97] - OAuth Token created with token:abcd, refresh token:pqrs, expiry:10, status:True, error code:1000, error message:No Error
+[2017-03-07 11:54:32,605] INFO [logger.py:69] - Registration Successful
+[2017-03-07 11:54:32,605] INFO [logger.py:69] - Token refresh timer started. Refresh will be attempted every 5 sec.
+[2017-03-07 11:54:37,605] INFO [logger.py:69] - Attempting Token Refreshing
+[2017-03-07 11:54:37,605] INFO [logger.py:69] - Refreshing token
+[2017-03-07 11:54:37,605] DEBUG [logger.py:97] - Attempting token refresh with pqrs
+[2017-03-07 11:54:38,617] INFO [logger.py:69] - Token Refresh Successful
+[2017-03-07 11:54:38,618] DEBUG [logger.py:97] - OAuth Token created with token:qwerty, refresh token:poiu, expiry:2000, status:True, error code:1000, error message:No Error
+[2017-03-07 11:54:38,618] INFO [logger.py:69] - Token refresh timer started. Refresh will be attempted every 1995 sec.
+[2017-03-07 11:54:38,618] INFO [logger.py:69] - Token Refresh Completed
+[2017-03-07 12:27:53,618] INFO [logger.py:69] - Attempting Token Refreshing
+[2017-03-07 12:27:53,618] INFO [logger.py:69] - Refreshing token
+[2017-03-07 12:27:53,618] DEBUG [logger.py:97] - Attempting token refresh with poiu
+[2017-03-07 12:27:54,628] INFO [logger.py:69] - Token Refresh Successful
+[2017-03-07 12:27:54,628] DEBUG [logger.py:97] - OAuth Token created with token:qwerty, refresh token:poiu, expiry:2000, status:True, error code:1000, error message:No Error
+[2017-03-07 12:27:54,628] INFO [logger.py:69] - Token refresh timer started. Refresh will be attempted every 1995 sec.
+[2017-03-07 12:27:54,630] INFO [logger.py:69] - Token Refresh Completed
+[2017-03-07 13:01:09,628] INFO [logger.py:69] - Attempting Token Refreshing
+[2017-03-07 13:01:09,628] INFO [logger.py:69] - Refreshing token
+[2017-03-07 13:01:09,628] DEBUG [logger.py:97] - Attempting token refresh with poiu
+[2017-03-07 13:01:10,641] INFO [logger.py:69] - Token Refresh Successful
+[2017-03-07 13:01:10,641] DEBUG [logger.py:97] - OAuth Token created with token:qwerty, refresh token:poiu, expiry:2000, status:True, error code:1000, error message:No Error
+[2017-03-07 13:01:10,641] INFO [logger.py:69] - Token refresh timer started. Refresh will be attempted every 1995 sec.
+[2017-03-07 13:01:10,641] INFO [logger.py:69] - Token Refresh Completed
+[2017-03-07 13:34:25,641] INFO [logger.py:69] - Attempting Token Refreshing
+[2017-03-07 13:34:25,641] INFO [logger.py:69] - Refreshing token
+[2017-03-07 13:34:25,641] DEBUG [logger.py:97] - Attempting token refresh with poiu
+[2017-03-07 13:34:26,654] INFO [logger.py:69] - Token Refresh Successful
+[2017-03-07 13:34:26,654] DEBUG [logger.py:97] - OAuth Token created with token:qwerty, refresh token:poiu, expiry:2000, status:True, error code:1000, error message:No Error
+[2017-03-07 13:34:26,654] INFO [logger.py:69] - Token refresh timer started. Refresh will be attempted every 1995 sec.
+[2017-03-07 13:34:26,654] INFO [logger.py:69] - Token Refresh Completed
+[2017-03-07 14:07:41,654] INFO [logger.py:69] - Attempting Token Refreshing
+[2017-03-07 14:07:41,654] INFO [logger.py:69] - Refreshing token
+[2017-03-07 14:07:41,654] DEBUG [logger.py:97] - Attempting token refresh with poiu
+[2017-03-07 14:07:42,667] INFO [logger.py:69] - Token Refresh Successful
+[2017-03-07 14:07:42,667] DEBUG [logger.py:97] - OAuth Token created with token:qwerty, refresh token:poiu, expiry:2000, status:True, error code:1000, error message:No Error
+[2017-03-07 14:07:42,667] INFO [logger.py:69] - Token refresh timer started. Refresh will be attempted every 1995 sec.
+[2017-03-07 14:07:42,667] INFO [logger.py:69] - Token Refresh Completed

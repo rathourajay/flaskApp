@@ -1,0 +1,16 @@
+INSTUPcentralrepo.clc
+C:\Users\gur40998\workspace\discovery_server_28_feb\centralrepo\clc.py
+INFOS:&&3|1|2|0&&3|3|2|0&&3|4|2|0&&3|5|2|0&&3|6|2|0&&3|7|2|0&&3|8|2|0&&3|9|2|0&&3|10|2|0&&2|11|2|0&&2|12|2|0&&2|13|2|0
+list_docker_images=12
+centralrepo.clc=2
+DOCKER_GLOBAL_REG_UNAME=4
+DOCKER_LOCAL_REG_UNAME=6
+update_docker_registry=11
+cld_id=1
+MEC_CLC_PORT=3
+clc=10
+GLOBAL_REG_URL=9
+LOCAL_REG_URL=8
+heartbeat=13
+DOCKER_LOCAL_REG_PASS=7
+DOCKER_GLOBAL_REG_PASS=5

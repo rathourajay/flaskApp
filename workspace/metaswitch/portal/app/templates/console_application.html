@@ -1,0 +1,16 @@
+{% extends "layout_closed.html" %}
+{% block content %}
+<div class="console-form">
+<h2>Update Application {{ name }} Deployment Policy</h2>
+{% from "_formhelpers.html" import render_field %}
+<form class="form" method="POST">
+  {{ form.csrf_token }}
+  {{ form.id }}
+  <dl>
+    {{ render_field(form.enabled) }}
+    {{ render_field(form.placement) }}
+  </dl>
+  <p><input type="submit" value="Update">
+</form>
+</div>
+{% endblock %}

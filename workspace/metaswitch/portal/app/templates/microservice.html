@@ -1,0 +1,10 @@
+{% extends "layout_closed.html" %}
+{% block content %}
+<h2>Configure microservice</h2>
+<form>
+  {{ form.csrf_token }}
+  {{ form.name }}
+  {{ form.public }}
+  {{ form.metadata }}
+</form>
+</div>

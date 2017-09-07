@@ -1,0 +1,68 @@
+-- VERSION_4
+-- START DISKCACHE
+C:\Users\gur40998\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\todomvc-django-master\com.python.pydev.analysis\v2_indexcache
+api.urls|1435138498870|C:\Users\gur40998\Downloads\todomvc-django-master\api\urls.py
+api.serializers|1435138498844|C:\Users\gur40998\Downloads\todomvc-django-master\api\serializers.py
+todo.__init__|1435138502577|C:\Users\gur40998\Downloads\todomvc-django-master\todo\__init__.py
+task.__init__|1435138502236|C:\Users\gur40998\Downloads\todomvc-django-master\task\__init__.py
+todo.wsgi|1435138502628|C:\Users\gur40998\Downloads\todomvc-django-master\todo\wsgi.py
+api.admin|1435138498819|C:\Users\gur40998\Downloads\todomvc-django-master\api\admin.py
+api.views|1435138498883|C:\Users\gur40998\Downloads\todomvc-django-master\api\views.py
+manage|1435138498782|C:\Users\gur40998\Downloads\todomvc-django-master\manage.py
+task.models|1435138502260|C:\Users\gur40998\Downloads\todomvc-django-master\task\models.py
+todo.settings|1435644272698|C:\Users\gur40998\Downloads\todomvc-django-master\todo\settings.py
+todo.views|1435138502615|C:\Users\gur40998\Downloads\todomvc-django-master\todo\views.py
+task.admin|1435138502248|C:\Users\gur40998\Downloads\todomvc-django-master\task\admin.py
+todo.urls|1435138502603|C:\Users\gur40998\Downloads\todomvc-django-master\todo\urls.py
+task.tests|1435138502273|C:\Users\gur40998\Downloads\todomvc-django-master\task\tests.py
+api.__init__|1435138498806|C:\Users\gur40998\Downloads\todomvc-django-master\api\__init__.py
+api.tests|1435138498856|C:\Users\gur40998\Downloads\todomvc-django-master\api\tests.py
+-- END DISKCACHE
+-- START DICTIONARY
+13
+13=Home
+7=api.urls
+5=api.serializers
+11=TaskSerializer
+2=todo.wsgi
+4=api.views
+6=task.models
+10=TaskSerializer.Meta
+1=todo.settings
+3=todo.views
+8=todo.urls
+9=Task
+12=TaskMixin
+-- END DICTIONARY
+-- START TREE 1
+18
+all|1|ALLOWED_HOSTS!11@
+app|1|application!19@
+bas|1|BASE_DIR!11@
+dat|1|DATABASES!11@
+deb|1|DEBUG!11@
+hom|1|Home!25@
+ins|1|INSTALLED_APPS!11@
+lan|1|LANGUAGE_CODE!11@
+mid|1|MIDDLEWARE_CLASSES!11@
+roo|1|ROOT_URLCONF!11@
+sec|1|SECRET_KEY!11@
+sta|2|STATIC_URL!11@STATICFILES_DIRS!11@
+tas|5|TaskMixin!33@TaskDetail!33@TaskSerializer!41@Task!49@TaskList!33@
+tem|2|TEMPLATE_DIRS!11@TEMPLATE_DEBUG!11@
+tim|1|TIME_ZONE!11@
+url|2|urlpatterns!59@urlpatterns!67@
+use|3|USE_TZ!11@USE_L10N!11@USE_I18N!11@
+wsg|1|WSGI_APPLICATION!11@
+-- END TREE
+-- START TREE 2
+8
+com|1|completed!9&51@
+fie|1|fields!10&43@
+met|1|Meta!11&41@
+mod|1|model!10&43@
+que|1|queryset!12&35@
+ser|1|serializer_class!12&35@
+tem|1|template_name!13&27@
+tit|1|title!9&51@
+-- END TREE

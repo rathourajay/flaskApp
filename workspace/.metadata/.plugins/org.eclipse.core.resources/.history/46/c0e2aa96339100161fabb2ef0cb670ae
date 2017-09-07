@@ -1,0 +1,77 @@
+"""
+Dacorator/parameterized decorator
+"""
+
+
+# def logging_decorator(func):
+#     def wrapper():
+#         wrapper.count += 1
+#         print "The function I modify has been called {0} times(s).".format(
+#               wrapper.count)
+#         func()
+#     wrapper.count = 0
+#     return wrapper
+#
+#
+# def a_function():
+#     print "I'm a normal function."
+#
+# modified_function = logging_decorator(a_function)
+# print modified_function()
+# modified_function()
+
+"""
+decorator without argument
+foo = addbonus(add)
+"""
+
+
+# def addbonus(func):
+#     print "1st_step"
+#
+#     def wrapper(x, y):
+#         print "2nd step"
+#         return "ajay" + str(func(x, y))
+#     print "3rd step"
+#
+#     return wrapper
+#
+#
+# @addbonus
+# def add(x, y):
+#     print "4th step"
+#     return x + y
+# print "0th step"
+# print add(10, 20)
+
+"""
+decorator with argument
+foo = addbonus(args)(add)
+"""
+
+
+# def addbonus(a, b):
+#     print "1st"
+#
+#     def first_wrap(fun):
+#         print "4th"
+#
+#         def wrapper(x, y):
+#             print "6th"
+#             return a + b + fun(x, y)
+#         print "5th"
+#         return wrapper
+#     print "2nd"
+#     return first_wrap
+#
+#
+# @addbonus(10, 20)
+# def add(x, y):
+#     print "7th"
+#     return x + y
+# print "3rd"
+# print add(10, 20)
+
+
+"""
+fibonacci

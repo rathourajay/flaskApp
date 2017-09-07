@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;migration/l2gw-agent.ini&apos;" deleteContents="false" description="Delete resource &apos;migration/l2gw-agent.ini&apos;" element1="/migration/l2gw-agent.ini" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1454325401742"/>
+</session>

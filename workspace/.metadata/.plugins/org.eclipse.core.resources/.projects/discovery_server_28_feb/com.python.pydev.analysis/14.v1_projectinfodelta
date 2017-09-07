@@ -1,0 +1,9 @@
+INSTUPllo.orchestrator.orchestrator
+C:\Users\gur40998\workspace\discovery_server_28_feb\llo\orchestrator\orchestrator.py
+INFOS:&&3|1|2|0&&3|3|2|0&&2|4|2|0&&2|5|2|0&&2|6|2|0
+get_vm_stats=6
+list_cloudlet_images=5
+orchestrator=3
+llo.orchestrator.orchestrator=2
+MEC_ORCHESTRATOR_PORT=1
+terminate_cloudlet=4

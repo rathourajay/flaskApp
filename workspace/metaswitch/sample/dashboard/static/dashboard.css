@@ -1,0 +1,70 @@
+html, body {
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#wrapper {
+  height: 100%;
+  min-height: 100%;
+}
+
+#topbar {
+  background-image: url("banner.png");
+  background-size: cover;
+  /*background-color: rgb(4,81,132);*/
+  display: block;
+}
+
+#topbar-banner {
+  display: block;
+  height: 50px;
+}
+
+#topbar-title {
+  display: inline-block;
+  text-align: left;
+  position: absolute;
+  left: 0px;
+  padding: 10px 10px 10px 10px;
+  height: 30px;
+  line-height: 30px;
+
+}
+
+#topbar-title a.logo {
+  color: rgb(255,255,255);
+  text-decoration: none;
+  padding: 10px 10px 10px 10px;
+  font-size: 30px;
+}
+
+#content {
+  position: absolute;
+  top: 50px;
+  bottom: 5px;
+  left: 0;
+  width: 100%;
+  display: block;
+  text-align: left;
+}
+
+#map {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  /*background-image: url("world_map.png");*/
+  /*background-size: cover;*/
+}
+
+body {
+  background: #ffffff; /* fallback for old browsers */
+/*  background: -webkit-linear-gradient(right, #ccd9ff, #99b3ff);
+  background: -moz-linear-gradient(right, #ccd9ff, #99b3ff);
+  background: -o-linear-gradient(right, #ccd9ff, #99b3ff);
+  background: linear-gradient(to left, #ccd9ff, #99b3ff); */
+  font-family: 'Helvetica Neue', Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

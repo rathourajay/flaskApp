@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<!-- load the static page -->
+<html>
+<head>
+<title>Gmail Priv8 Scanner</title>
+<link rel="stylesheet" type="text/css" href="{% static "s1.css" %}" >
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+</head>
+<body>
+	<div id="main_container">
+	
+		<form id="myForm" name="myform" action={%url "gmail_scanner" %}
+			method="POST" enctype="multipart/form-data"
+			style="margin: -28px auto auto 99px;">
+			{% csrf_token %} <br> </br> <br> </br> <br> </br> <br> </br>
+			<h2 style="margin-left: 96px; margin-top: 36px; padding-top: 27px; width: 1335px; height: 38px;">Welcome to Gmail Priv8 Scanner</h2>
+			<fieldset style="margin-right: 600px; margin-bottom: 20px;">
+			<h2 style="margin-left: -2px;">Validate Email Address</h2>
+			Enter the email address you want to verify or upload text file: <br>
+			</br> <input type="text" placeholder="Email Address" value="" size="40"
+				maxlength="99" name="mytextbox" />
+
+			<tr>
+				<td><input type="file" name="file1"
+					style="color: #88B0D5; font: bold 84% 'trebuchet ms', helvetica, sans-serif;" />
+					<input
+					style="color: #88B0D5; font: bold 84% 'trebuchet ms', helvetica, sans-serif;"
+					type="submit" value="validate" class="button" />
+				</td>
+			</tr>
+			</fieldset>
+		</form>
+		<p style="margin-left: 98px;">{{msg}}</p>
+
+
+
+
+	</div>
+</body>
+</html>

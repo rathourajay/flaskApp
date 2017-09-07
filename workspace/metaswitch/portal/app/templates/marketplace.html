@@ -1,0 +1,30 @@
+{% extends "layout_open.html" %}
+{% block content %}
+<div id=marketplace>
+  <div class="search">
+    <form class="search" method="post">
+      <input id="search-text" class="search-text" type="text" autocomplete="off" value="" placeholder="Search">
+      <input type="submit">
+    </form>
+  </div>
+  <div class="categories">
+    <ul>
+      <li id="ai"><a href="marketplace?filter=ai">Artifical Intelligence</a>
+      <li id="ar"><a href="marketplace?filter=ar">Augmented Reality</a>
+      <li id="vr"><a href="marketplace?filter=vr">Virtual Reality</a>
+      <li id="ro"><a href="marketplace?filter=ro">Robotics</a>
+      <li id="cv"><a href="marketplace?filter=cv">Computer Vision</a>
+      <li id="ir"><a href="marketplace?filter=ir">Image Recognition</a>
+    </ul>
+  </div>
+  <div class="microservices">
+    {% for microservice in microservices %}
+    <div class="mswrapper">
+      <div class="msimage"><img src="msimages/{{ microservice.image }}"/></div>
+      <div class="msname">{{ microservice.name }}</div>
+      <div class="msdev">{{ microservice.developer_name }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

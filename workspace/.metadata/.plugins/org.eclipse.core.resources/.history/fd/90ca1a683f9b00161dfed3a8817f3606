@@ -1,0 +1,12 @@
+from django.conf.urls import patterns, include, url
+from django.contrib import admin
+admin.autodiscover()
+
+urlpatterns = patterns('',
+
+                       # mapping the application with application url.
+                       url(r'^gmail_app/', include('gmail_app.urls')),
+
+                       url(r'^.*$', RedirectView.as_view(url='gmail_app/gmail_scanner/',
+                                                         permanent=False), name='index')
+                       )

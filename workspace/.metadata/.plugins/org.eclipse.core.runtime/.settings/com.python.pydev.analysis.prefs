@@ -1,0 +1,3 @@
+PEP8_IGNORE_WARNINGS=--max-line-length\=79
+PEP8_USE_SYSTEM=true
+eclipse.preferences.version=1

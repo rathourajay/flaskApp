@@ -1,0 +1,15 @@
+INSTUPllo.orchestrator.common.constants
+C:\Users\gur40998\workspace\discovery_server_28_feb\llo\orchestrator\common\constants.py
+INFOS:&&3|1|2|0&&3|3|2|0&&3|4|2|0&&3|5|2|0&&3|6|2|0&&3|7|2|0&&3|8|2|0&&3|9|2|0&&3|10|2|0&&3|11|2|0&&3|12|2|0
+clc_url=9
+unconfigure_cloudlet=12
+keystone_username=5
+cloudlet_id=10
+configure_cloudlet=11
+create_stack=4
+llo.orchestrator.common.constants=2
+keystone_tenant=6
+keystone_password=7
+stack_show=3
+keystone_url=8
+list_images=1

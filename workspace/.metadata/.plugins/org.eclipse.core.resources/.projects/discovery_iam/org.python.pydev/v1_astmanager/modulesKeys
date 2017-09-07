@@ -1,0 +1,8 @@
+MODULES_MANAGER_V2
+discoveryserver.__init__|C:\Users\gur40998\workspace\discovery_iam\discoveryserver\__init__.py
+discoveryserver.discoveryserver|C:\Users\gur40998\workspace\discovery_iam\discoveryserver\discoveryserver.py
+discoveryserver.global_config|C:\Users\gur40998\workspace\discovery_iam\discoveryserver\global_config.py
+discoveryserver.iam_proxy|C:\Users\gur40998\workspace\discovery_iam\discoveryserver\iam_proxy.py
+discoveryserver.iam_proxy_common|C:\Users\gur40998\workspace\discovery_iam\discoveryserver\iam_proxy_common.py
+discoveryserver.logger|C:\Users\gur40998\workspace\discovery_iam\discoveryserver\logger.py
+iam_server_stub|C:\Users\gur40998\workspace\discovery_iam\iam_server_stub.py

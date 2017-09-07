@@ -1,0 +1,45 @@
+-- VERSION_4
+-- START DISKCACHE
+C:\Users\gur40998\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\simple-django-auth-example-master\com.python.pydev.analysis\v2_indexcache
+simpleauthexample.views|1477388706410|C:\Users\gur40998\workspace\simple-django-auth-example-master\simpleauthexample\views.py
+simpleauthexample.__init__|1477388706328|C:\Users\gur40998\workspace\simple-django-auth-example-master\simpleauthexample\__init__.py
+simpleauthexample.wsgi|1477388706423|C:\Users\gur40998\workspace\simple-django-auth-example-master\simpleauthexample\wsgi.py
+simpleauthexample.urls|1477388706377|C:\Users\gur40998\workspace\simple-django-auth-example-master\simpleauthexample\urls.py
+simpleauthexample.settings|1477388706341|C:\Users\gur40998\workspace\simple-django-auth-example-master\simpleauthexample\settings.py
+manage|1477388706306|C:\Users\gur40998\workspace\simple-django-auth-example-master\manage.py
+-- END DISKCACHE
+-- START DICTIONARY
+4
+3=simpleauthexample.views
+2=simpleauthexample.wsgi
+4=simpleauthexample.urls
+1=simpleauthexample.settings
+-- END DICTIONARY
+-- START TREE 1
+22
+adm|1|ADMINS!11@
+app|1|application!19@
+aut|1|auth_and_login!26@
+cre|1|create_user!26@
+dat|1|DATABASES!11@
+deb|1|DEBUG!11@
+ins|1|INSTALLED_APPS!11@
+lan|1|LANGUAGE_CODE!11@
+log|2|loginview!26@LOGGING!11@
+man|1|MANAGERS!11@
+med|2|MEDIA_URL!11@MEDIA_ROOT!11@
+mid|1|MIDDLEWARE_CLASSES!11@
+roo|1|ROOT_URLCONF!11@
+sec|2|secured!26@SECRET_KEY!11@
+sig|1|sign_up_in!26@
+sit|1|SITE_ID!11@
+sta|4|STATIC_URL!11@STATIC_ROOT!11@STATICFILES_DIRS!11@STATICFILES_FINDERS!11@
+tem|3|TEMPLATE_LOADERS!11@TEMPLATE_DIRS!11@TEMPLATE_DEBUG!11@
+tim|1|TIME_ZONE!11@
+url|1|urlpatterns!35@
+use|4|USE_TZ!11@USE_I18N!11@user_exists!26@USE_L10N!11@
+wsg|1|WSGI_APPLICATION!11@
+-- END TREE
+-- START TREE 2
+0
+-- END TREE

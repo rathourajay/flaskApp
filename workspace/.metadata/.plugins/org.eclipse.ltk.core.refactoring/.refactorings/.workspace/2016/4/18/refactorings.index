@@ -1,0 +1,6 @@
+1461578067111	Delete resource 'migration/L2_Gateway_Migration/log/l2_gw_migration.log'
+1461578947233	Delete resource 'migration/L2_Gateway_Migration/src/db_migration.py'
+1461578955990	Delete resource 'migration/L2_Gateway_Migration/README.md'
+1461578961403	Delete resource 'migration/L2_Gateway_Migration/start.py'
+1461579104783	Delete resource 'migration/L2_Gateway_Migration/src/common/token_generator.py'
+1461580791261	Delete resource 'migration/L2_Gateway_Migration/log/l2_gw_migration.log'

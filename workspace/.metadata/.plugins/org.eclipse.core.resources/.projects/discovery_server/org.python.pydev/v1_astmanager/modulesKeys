@@ -1,0 +1,17 @@
+MODULES_MANAGER_V2
+centralrepo.appCatalog.appcatalog|C:\Users\gur40998\workspace\discovery_server\centralrepo\appCatalog\appcatalog.py
+centralrepo.clc|C:\Users\gur40998\workspace\discovery_server\centralrepo\clc.py
+centralrepo.clc1|C:\Users\gur40998\workspace\discovery_server\centralrepo\clc1.py
+centralrepo.clc_from_VM|C:\Users\gur40998\workspace\discovery_server\centralrepo\clc_from_VM.py
+centralrepo.cloudletcatalog.cloudletcatalog|C:\Users\gur40998\workspace\discovery_server\centralrepo\cloudletcatalog\cloudletcatalog.py
+centralrepo.cms|C:\Users\gur40998\workspace\discovery_server\centralrepo\cms.py
+centralrepo.llo|C:\Users\gur40998\workspace\discovery_server\centralrepo\llo.py
+centralrepo.microservicecatalog.microservicecatalog|C:\Users\gur40998\workspace\discovery_server\centralrepo\microservicecatalog\microservicecatalog.py
+discovery.discoveryserver|C:\Users\gur40998\workspace\discovery_server\discovery\discoveryserver.py
+discovery.discoveryserver_v5|C:\Users\gur40998\workspace\discovery_server\discovery\discoveryserver_v5.py
+discovery.discoveryserver_v6|C:\Users\gur40998\workspace\discovery_server\discovery\discoveryserver_v6.py
+discovery.discoveryserver_v7|C:\Users\gur40998\workspace\discovery_server\discovery\discoveryserver_v7.py
+discovery.discoveryserver_v8|C:\Users\gur40998\workspace\discovery_server\discovery\discoveryserver_v8.py
+discoveryagent|C:\Users\gur40998\workspace\discovery_server\discoveryagent.py
+discoveryagent_v1|C:\Users\gur40998\workspace\discovery_server\discoveryagent_v1.py
+test|C:\Users\gur40998\workspace\discovery_server\test.py

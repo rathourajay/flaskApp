@@ -1,0 +1,9 @@
+INSTUPllo.orchestrator.common.management_api
+C:\Users\gur40998\workspace\discovery_server_28_feb\llo\orchestrator\common\management_api.py
+INFOS:&&2|1|2|0&&2|3|2|0&&2|4|2|0&&2|5|2|0&&2|6|2|0
+updated_cloudlet_status=5
+llo.orchestrator.common.management_api=2
+update_cloudlet_metadata=3
+get_edge_details=1
+get_endpoint=6
+fetch_cloudlet_edge_details=4

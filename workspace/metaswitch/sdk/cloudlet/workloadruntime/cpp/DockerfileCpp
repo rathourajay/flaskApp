@@ -1,0 +1,7 @@
+FROM ubuntu:14.04
+RUN mkdir /opt/ens
+COPY runtime/workloadCpp.sh /opt/ens/
+COPY runtime/libensiwc.so /opt/ens/
+COPY runtime/enscppruntime /opt/ens/
+ENTRYPOINT ["/opt/ens/workloadCpp.sh"]
+

@@ -1,0 +1,14 @@
+MODULES_MANAGER_V2
+f1|C:\Users\gur40998\workspace\test1213\f1.py
+f2|C:\Users\gur40998\workspace\test1213\f2.py
+manage|C:\Users\gur40998\workspace\test1213\manage.py
+polls.__init__|C:\Users\gur40998\workspace\test1213\polls\__init__.py
+polls.admin|C:\Users\gur40998\workspace\test1213\polls\admin.py
+polls.migrations.__init__|C:\Users\gur40998\workspace\test1213\polls\migrations\__init__.py
+polls.models|C:\Users\gur40998\workspace\test1213\polls\models.py
+polls.tests|C:\Users\gur40998\workspace\test1213\polls\tests.py
+polls.views|C:\Users\gur40998\workspace\test1213\polls\views.py
+test1213.__init__|C:\Users\gur40998\workspace\test1213\test1213\__init__.py
+test1213.settings|C:\Users\gur40998\workspace\test1213\test1213\settings.py
+test1213.urls|C:\Users\gur40998\workspace\test1213\test1213\urls.py
+test1213.wsgi|C:\Users\gur40998\workspace\test1213\test1213\wsgi.py

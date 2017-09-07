@@ -1,0 +1,47 @@
+-- VERSION_4
+-- START DISKCACHE
+C:\Users\gur40998\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\test1213\com.python.pydev.analysis\v2_indexcache
+polls.models|1484046982870|C:\Users\gur40998\workspace\test1213\polls\models.py
+manage|1484046799935|C:\Users\gur40998\workspace\test1213\manage.py
+polls.migrations.__init__|1484046982882|C:\Users\gur40998\workspace\test1213\polls\migrations\__init__.py
+polls.admin|1484046982865|C:\Users\gur40998\workspace\test1213\polls\admin.py
+test1213.__init__|1484046799981|C:\Users\gur40998\workspace\test1213\test1213\__init__.py
+polls.tests|1484046982875|C:\Users\gur40998\workspace\test1213\polls\tests.py
+test1213.urls|1484046799974|C:\Users\gur40998\workspace\test1213\test1213\urls.py
+test1213.wsgi|1484046799980|C:\Users\gur40998\workspace\test1213\test1213\wsgi.py
+f1|1486020013390|C:\Users\gur40998\workspace\test1213\f1.py
+test1213.settings|1484046799953|C:\Users\gur40998\workspace\test1213\test1213\settings.py
+f2|1486020066606|C:\Users\gur40998\workspace\test1213\f2.py
+polls.views|1484046982879|C:\Users\gur40998\workspace\test1213\polls\views.py
+polls.__init__|1484046982881|C:\Users\gur40998\workspace\test1213\polls\__init__.py
+-- END DISKCACHE
+-- START DICTIONARY
+4
+3=test1213.urls
+4=f1
+2=test1213.wsgi
+1=test1213.settings
+-- END DICTIONARY
+-- START TREE 1
+17
+all|1|ALLOWED_HOSTS!11@
+app|1|application!19@
+bas|1|BASE_DIR!11@
+dat|1|DATABASES!11@
+deb|1|DEBUG!11@
+ins|1|INSTALLED_APPS!11@
+lan|1|LANGUAGE_CODE!11@
+mid|1|MIDDLEWARE_CLASSES!11@
+roo|1|ROOT_URLCONF!11@
+sec|1|SECRET_KEY!11@
+sta|1|STATIC_URL!11@
+tem|1|TEMPLATES!11@
+tim|1|TIME_ZONE!11@
+url|1|urlpatterns!27@
+use|3|USE_I18N!11@USE_L10N!11@USE_TZ!11@
+wsg|1|WSGI_APPLICATION!11@
+xyz|1|xyz!34@
+-- END TREE
+-- START TREE 2
+0
+-- END TREE

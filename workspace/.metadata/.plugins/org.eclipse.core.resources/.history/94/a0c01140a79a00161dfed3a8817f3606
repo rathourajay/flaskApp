@@ -1,0 +1,16 @@
+from django.conf.urls import patterns, url
+from gmail_app import views
+from django.views.generic.base import RedirectView
+from django.views.generic.base import TemplateView
+from django.contrib.auth import views as auth_views
+urlpatterns = patterns('',
+
+                       url(r'^gmail_scanner/', views.gmail_scanner,
+                           name="gmail_scanner"),
+                       url(r'^$', TemplateView.as_view(
+                           template_name='home.html'), name='home'),
+                       url(r'^login/$', auth_views.login,
+                           {'template_name': 'home1.html'}, name='login'),
+                       url(r'^logout/$', auth_views.logout,
+                           {'template_name': 'logged_out.html'}, name='logout'),
+                       )

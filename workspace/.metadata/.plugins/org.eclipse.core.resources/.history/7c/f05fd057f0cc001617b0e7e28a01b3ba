@@ -1,0 +1,42 @@
+import re
+import threading
+import flask
+from flask import Flask, request, Response, jsonify
+import csv
+central_repo = Flask(__name__)
+
+
+@central_repo.route("/api/CR/change_status", methods=['PUT'])
+def change_state():
+    try:
+        cloudlet_id = request.args.get('cloudlet_id')
+        status = request.args.get('status')
+        print "Updating cloudlet:", cloudlet_id
+        new_list = []
+        found = False
+        with open('cr_db.csv', 'rb') as mycsvfile:
+
+            thedata = csv.reader(mycsvfile)
+            for row in thedata:
+                if 'cloudlet_id' in row:
+                    continue
+                else:
+                    if row[0] == cloudlet_id:
+                        found = True
+                        row[3] = 
+                new_list.append(row)
+        if found:
+            with open('cr_db.csv', 'wb') as mycsvfile1:
+                thedatawriter = csv.writer(mycsvfile1)
+                thedatawriter.writerow(
+                    ["cloudlet_id", "lat", "long", "status"])
+                for item in new_list:
+                    thedatawriter.writerow(item)
+
+            return "success"
+        else:
+            return "cloudlet not found in db"
+    except:
+        return "failure"
+
+central_repo.run(host="0.0.0.0", port=5001, threaded=True)

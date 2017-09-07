@@ -1,0 +1,16 @@
+[discoveryserver]
+
+MODULE_NAME = DiscoveryServer
+SELF_HOSTED_AT = /api/v1.0/discover/
+SELF_USER = cloud_api_admin
+SELF_PASSWORD = admin123
+INTERVAL_TO_CHECK_HEARTBEAT = 5
+INTERVAL_TO_DEACTIVATE_CLOUDLET = 20
+SUBSCRIBER_FILE = subscribers.ini
+CLOUDLET_CATALOG_URI = /api/v1.0/centralrepo/cloudletcatalog/
+APP_CATALOG_URI = /api/v1.0/centralrepo/appcatalog/
+MEC_APP_CATALOG_PORT = 0xecb9
+MEC_CLOUDLET_CATALOG_PORT = 0xecba
+MEC_DISCOVERY_SERVER_PORT = 0xed06
+MEC_IAM_PORT = 0xecc1
+IAM_PLUGGED_IN = 1

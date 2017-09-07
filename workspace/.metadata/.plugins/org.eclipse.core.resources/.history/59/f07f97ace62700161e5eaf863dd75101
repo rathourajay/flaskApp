@@ -1,0 +1,2 @@
+from oslo.config import cfg
+print "ajay"

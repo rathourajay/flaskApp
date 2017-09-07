@@ -1,0 +1,19 @@
+import fileinput
+admin_user = 'neutron'
+with open('input_data.conf', 'r') as file:
+    data = file.readlines()
+    cnt = 0
+    for item in data:
+        if item.startswith('db_user_id'):
+            item = 'db_user_id ='
+            item += ' '.join(admin_user)
+            break
+        cnt += 1
+        
+item = item + '\n'
+data[cnt] = item
+with open('l2gw-agent1.ini', 'w') as file:
+    file.writelines(data)
+    file.writelines('\n')
+self.log.info("##INI file updated## ")
+# db_user_id = 

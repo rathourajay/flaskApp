@@ -1,0 +1,5 @@
+1485155869822	Delete resource 'discovery_server/centralrepo/cloudletcatalog/cloudlet-catalog_new1.db'
+1485167936372	Delete resource 'discovery_server/discovery/discoveryserver_v1.py'
+1485173679911	Delete resource 'discovery_server/discoveryserver/iam-stub-nonrestful.py'
+1485174028600	Delete resource 'discovery_server/centralrepo/appCatalog/app-catalog_new.db'
+1485342042383	Delete resource 'discovery_server/centralrepo/cloudletUsage'

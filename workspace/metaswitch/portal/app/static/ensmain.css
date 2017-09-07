@@ -1,0 +1,480 @@
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#wrapper {
+  height: 100%;
+  min-height: 100%;
+}
+
+#topbar {
+  background-image: url("banner.png");
+  background-size: cover;
+  /*background-color: rgb(4,81,132);*/
+  display: block;
+}
+
+#topbar-banner {
+  display: block;
+  height: 80px;
+}
+
+#topbar-title {
+  display: inline-block;
+  text-align: left;
+  position: absolute;
+  left: 0px;
+  padding: 10px 10px 10px 10px;
+  height: 30px;
+  line-height: 30px;
+
+}
+
+#topbar-title a.logo {
+  color: rgb(255,255,255);
+  text-decoration: none;
+  padding: 10px 10px 10px 10px;
+  font-size: 30px;
+}
+
+#topbar-acct-buttons {
+  text-align: right;
+  position: absolute;
+  right: 20px;
+  padding: 10px 10px 10px 10px;
+  height: 30px;
+  line-height: 30px;
+}
+
+#topbar-acct-buttons a.button {
+  color: rgb(255,255,255);
+  text-decoration: none;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 10px 35px;
+  margin: 0px 10px;
+}
+
+#topbar-acct-buttons a.button:hover {
+  color: rgb(4,81,132);
+  background-color: white;
+}
+
+#topbar-nav-buttons {
+  text-align: left;
+  position: absolute;
+  left: 200px;
+  padding: 10px 10px 10px 10px;
+  height: 30px;
+  line-height: 30px;
+}
+
+#topbar-nav-buttons a.button {
+  color: rgb(255,255,255);
+  text-decoration: none;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 10px 35px;
+  margin: 0px 10px;
+}
+
+#topbar-nav-buttons a.button:hover {
+  color: rgb(4,81,132);
+  background-color: white;
+}
+
+#topbar-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#topbar-menu li {
+  float: left;
+}
+
+#topbar-menu li.right {
+  float: right;
+}
+
+#topbar-menu li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+#topbar-menu li a:hover {
+  color: rgb(4,81,132);
+  background-color: white;
+}
+
+#topbar-menu li.dropdown {
+  display: inline-block;
+}
+
+#topbar-menu .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+#topbar-menu .dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+#topbar-menu .dropdown-content a:hover {background-color: #f1f1f1}
+
+#topbar-menu .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+#content {
+  height: 90%;
+}
+
+#mainblock {
+  background-image: url("ENSmain.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 70%;
+  min-height: 70%;
+}
+
+#lowerblock {
+  height: 30%;
+  min-height: 30%;
+  width: 100%;
+}
+
+#sdk {
+  display: inline-block;
+  background-image: url("sdk2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 33%;
+}
+
+#locations {
+  display: inline-block;
+  background-image: url("locations2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 33%;
+}
+
+#pricing {
+  display: inline-block;
+  background-image: url("pricing2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 33%;
+}
+
+#marketplace div.search {
+  display: block;
+  height: 20%;
+  min-height: 20%;
+  padding: 20px 20px 20px 20px;
+}
+
+#marketplace div.search form {
+}
+
+#marketplace div.search input {
+  height: 30px;
+}
+
+#marketplace div.search input[type="text"] {
+  width: 300px;
+}
+
+#marketplace div.categories {
+  display: inline-block;
+  float: left;
+  width: 15%;
+}
+
+#marketplace div.categories ul {
+  display: block;
+  margin: 20px 20px 20px 20px;
+  padding: 0px;
+}
+
+#marketplace div.categories li {
+  display: block;
+  list-style: none;
+  height: 50px;
+  border: 1px solid grey;
+  padding: 10px 20px 10px 20px;
+}
+
+#marketplace div.categories a {
+  text-decoration: none;
+}
+
+#marketplace div.microservices {
+  display: inline-block;
+  float: left;
+  padding: 50px 100px 50px 100px;
+  width: 85%;
+}
+
+#marketplace div.mswrapper {
+  display: inline-block;
+  border: 1px solid grey;
+  width: 220px;
+  height: 280px;
+  margin: 10px 10px;
+}
+
+#marketplace div.mswrapper div.msimage {
+  display: block;
+  padding: 10px 10px 10px 10px;
+  height: 220px;
+  width: 220px;
+  vertical-align: middle;
+}
+
+#marketplace div.mswrapper div.msimage img {
+  height: auto;
+  width: 200px;
+}
+
+#marketplace div.mswrapper div.msname {
+  display: block;
+  height: 20px;
+  padding: 5px 10px 5px 10px;
+}
+
+#marketplace div.mswrapper div.msdev {
+  display: block;
+  height: 20px;
+  padding: 5px 10px 5px 10px;
+}
+
+#locations-page {
+  height: 100%;
+  min-height: 100%;
+}
+
+#location-map {
+  background-image: url("ENSmap.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  min-height: 100%;
+}
+
+div.image-overlay-link {
+  display: block;
+  padding: 10px 20px 10px 20px;
+  background-color: #bfbfbf;
+  position: relative;
+  left: 10%;
+  width: 45%;
+}
+
+div.image-overlay-link a {
+  text-decoration: none;
+  color: white;
+}
+
+div.image-overlay-link a span.headline {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+
+div.image-overlay-link a span.detail {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+}
+
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: left;
+}
+
+.form dl {
+  display: block;
+  margin: 10px;
+}
+
+.form .formfield {
+  display: block;
+  padding: 10px;
+}
+
+.form dt {
+  display: inline-block;
+  width: 200px;
+  vertical-align: top;
+}
+
+.form label {
+  font-size: 20px;
+}
+
+.form dd {
+  display: inline-block;
+  width: 200px;
+  vertical-align: top;
+}
+
+.form input[type="submit"] {
+  font-size: 20px;
+}
+
+.form textarea {
+  height: 100px;
+  width: 400px;
+}
+
+.form .button {
+  outline: 0;
+  background: #0069A6;
+  width: 100px;
+  border: 0;
+  border-radius: 5px;
+  border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: 5px 5px 5px #888888;
+  padding: 15.75px;
+  color: #FFFFFF;
+  font-family: 'Helvetica Neue', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15.75px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.form .button:hover,.form .button:active,.form .button:focus {
+  background: #0079B6;
+}
+
+.form .checkbox {
+  text-align: left;
+  margin: 0 0 15px;
+}
+
+.form .checkbox input {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.form .checkbox label {
+  width: auto;
+  text-align: left;
+  margin-left: 5px;
+}
+
+div.console-app-list {
+  margin: 40px 50px 40px 50px;
+}
+
+div.heading {
+  display: block;
+  margin: 10px 20px 10px 20px;
+  font-weight: bold;
+  font-size: 20px;
+  border-bottom: 2px;
+}
+
+div.table-row {
+  display: block;
+  margin: 10px 20px 10px 20px;
+}
+
+.console-app-list div.edit {
+  display: inline-block;
+  width: 100px;
+}
+
+.console-app-list div.name {
+  display: inline-block;
+  width: 400px;
+}
+
+.console-app-list div.status {
+  display: inline-block;
+  width: 100px;
+}
+
+.console-app-list div.placement {
+  display: inline-block;
+  width: 150px;
+}
+
+div.dev-app-list {
+  margin: 40px 50px 40px 50px;
+}
+
+div.dev-ms-list {
+  margin: 40px 50px 40px 50px;
+}
+
+.dev-app-list div.edit {
+  display: inline-block;
+  width: 100px;
+}
+
+.dev-app-list div.name {
+  display: inline-block;
+  width: 400px;
+}
+
+.dev-ms-list div.edit {
+  display: inline-block;
+  width: 100px;
+}
+
+.dev-ms-list div.name {
+  display: inline-block;
+  width: 400px;
+}
+
+
+body {
+  background: #ffffff; /* fallback for old browsers */
+/*  background: -webkit-linear-gradient(right, #ccd9ff, #99b3ff);
+  background: -moz-linear-gradient(right, #ccd9ff, #99b3ff);
+  background: -o-linear-gradient(right, #ccd9ff, #99b3ff);
+  background: linear-gradient(to left, #ccd9ff, #99b3ff); */
+  font-family: 'Helvetica Neue', Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

@@ -1,0 +1,1 @@
+g++ -g -Wall -std=c++0x -o out/opt/ensdispatcher -I. -I../../jsoncpp/dist ../../common/iwc/ensiwcmgr.cpp ../../common/iwc/ensiwcdispatcher.cpp ../../common/iwc/enslog.cpp ../../common/iwc/ensiwcmem.cpp ../../jsoncpp/dist/jsoncpp.cpp -pthread

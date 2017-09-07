@@ -1,0 +1,19 @@
+from django.conf.urls import patterns, include, url
+from django.contrib import admin
+admin.autodiscover()
+from django.views.generic.base import RedirectView
+from django.views.generic.base import TemplateView
+from django.contrib.auth import views as auth_views
+urlpatterns = patterns('',
+
+                       # mapping the application with application url.
+                       url(r'^gmail_app/', include('gmail_app.urls')),
+                       url(r'^$', TemplateView.as_view(
+                           template_name='home.html'), name='home'),
+                       url(r'^login/$', auth_views.login,
+                           {'template_name': 'home1.html'}, name='login'),
+                       url(r'^logout/$', auth_views.logout,
+                           {'template_name': 'logged_out.html'}, name='logout'),
+                       #                        url(r'^.*$', RedirectView.as_view(url='gmail_app/gmail_scanner/',
+                       # permanent=False), name='index')
+                       )

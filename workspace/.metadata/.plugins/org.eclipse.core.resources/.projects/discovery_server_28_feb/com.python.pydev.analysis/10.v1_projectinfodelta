@@ -1,0 +1,9 @@
+INSTUPllo.orchestrator.common.rest_request
+C:\Users\gur40998\workspace\discovery_server_28_feb\llo\orchestrator\common\rest_request.py
+INFOS:&&2|1|2|0&&2|3|2|0&&2|4|2|0&&2|5|2|0&&2|6|2|0
+post_request=3
+put_request=4
+delete_request=5
+get_request=6
+llo.orchestrator.common.rest_request=2
+generic_request=1

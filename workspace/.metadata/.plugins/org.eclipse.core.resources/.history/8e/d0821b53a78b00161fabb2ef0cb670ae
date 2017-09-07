@@ -1,0 +1,46 @@
+"""
+Dacorator/parameterized decorator
+"""
+
+# def logging_decorator(func):
+# #     import pdb;pdb.set_trace()
+#     def wrapper():
+#         wrapper.count += 1
+#         print "The function I modify has been called {0} times(s).".format(
+#               wrapper.count)
+#         func()
+#     wrapper.count = 0
+#     return wrapper
+#
+#
+# def a_function():
+#     print "I'm a normal function."
+#
+# modified_function = logging_decorator(a_function)
+# print modified_function()
+# # modified_function()
+
+# def addbonus(func):
+#     def wrapper(x,y):
+#         return 12+func(x,y)
+#     return wrapper
+#
+# @addbonus
+# def add(x,y):
+#     return x+y
+#
+# print add(10,20)
+
+# parameterized
+# def addbonus(str_abc):
+#     def first_wrap(fun):
+#         def wrapper(x,y):
+#             return str_abc+str(fun(x,y))
+#         return wrapper
+#     return first_wrap
+#
+# @addbonus('percentage')
+# def add(x,y):
+#     return x+y
+#
+# print add(10,20)

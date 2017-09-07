@@ -1,0 +1,78 @@
+"""
+Dacorator/parameterized decorator
+"""
+
+# def logging_decorator(func):
+# #     import pdb;pdb.set_trace()
+#     def wrapper():
+#         wrapper.count += 1
+#         print "The function I modify has been called {0} times(s).".format(
+#               wrapper.count)
+#         func()
+#     wrapper.count = 0
+#     return wrapper
+#
+#
+# def a_function():
+#     print "I'm a normal function."
+#
+# modified_function = logging_decorator(a_function)
+# print modified_function()
+# # modified_function()
+
+# def addbonus(func):
+#     def wrapper(x,y):
+#         return 12+func(x,y)
+#     return wrapper
+#
+# @addbonus
+# def add(x,y):
+#     return x+y
+#
+# print add(10,20)
+
+# parameterized
+# def addbonus(str_abc):
+#     def first_wrap(fun):
+#         def wrapper(x,y):
+#             return str_abc+str(fun(x,y))
+#         return wrapper
+#     return first_wrap
+#
+# @addbonus('percentage')
+# def add(x,y):
+#     return x+y
+#
+# print add(10,20)
+
+
+"""
+fibonaccii by generator
+"""
+
+
+def fib():
+    import pdb
+    pdb.set_trace()
+    a, b = 0, 1
+    while 1:
+        yield a
+        a, b = b, a + b
+a = fib()
+
+for i in range(10):
+
+    print a.next(),
+
+
+"""
+lambda filter map reduce
+"""
+# l1 = map(lambda x:x+2, [1,2,3])
+# print l1
+#
+# l2 = filter(lambda x:x%2 ==0, [1,2,3])
+# print l2
+#
+# l3 = reduce(lambda x,y:x+y,[2,3,4,5])
+# print l3

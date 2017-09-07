@@ -1,0 +1,12 @@
+import flask
+import json
+from flask import Flask, request, Response
+
+dicovery_agent = Flask(__name__)
+
+
+@discovery_agent.route("/cloudletcontroller/cloudlet/v1.5/register", methods=['POST'])
+def register_cloudlet():
+    cloudlet_id = request.args.get("cloudlet_id")
+    response = requests.put(
+        "http://localhost:5000/api/DS/registerCloudlet?cloudlet_id=cl13")

@@ -1,0 +1,10 @@
+FROM ubuntu:14.04
+RUN echo "deb http://archive.ubuntu.com/ubuntu/ $(lsb_release -sc) main universe" >> /etc/apt/sources.list
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes python2.7
+RUN mkdir /opt/ens
+COPY runtime/workloadPy.sh /opt/ens/
+COPY runtime/ensiwc.so /opt/ens/
+COPY runtime/enswmain.py /opt/ens/
+COPY runtime/enswr.py /opt/ens/
+ENTRYPOINT ["/opt/ens/workloadPy.sh"]
+

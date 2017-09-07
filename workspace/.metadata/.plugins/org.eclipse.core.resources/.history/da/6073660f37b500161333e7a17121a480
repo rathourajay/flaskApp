@@ -1,0 +1,927 @@
+"""
+fibonaccii by generator
+"""
+# from _collections import defaultdict
+# from __builtin__ import globals
+from sys import getsizeof
+
+
+# def fib():
+#
+#     a, b = 0, 1
+#
+#     while 1:
+#
+#         yield a
+#
+#         a, b = b, a + b
+# a = fib()
+#
+#
+# for i in range(10):
+#
+#     print a.next(),
+
+"""
+shallow vs deep copy
+"""
+# import copy
+#
+# a = [1,2,3]
+# print "before copy address of a.."
+# print hex(id(a))
+# b = ['x','y','z']
+# print "before copy address of b.."
+# print hex(id(b))
+# # a = copy.copy(b)
+# # a = copy.copy(b)
+# a = b
+# print "after copy address of a.."
+# print hex(id(a))
+# print "after copy address of b.."
+# print hex(id(b))
+
+# import copy
+#
+# class MyClass:
+#     def __init__(self, name):
+#         self.name = name
+#     def __cmp__(self, other):
+#         return cmp(self.name, other.name)
+#
+# a = MyClass('a')
+# l = [ a ]
+# dup = copy.deepcopy(l)
+#
+# print 'l  :', l
+# print 'dup:', dup
+# print 'dup is l:', (dup is l)
+# print 'dup == l:', (dup == l)
+# print 'dup[0] is l[0]:', (dup[0] is l[0])
+# print 'dup[0] == l[0]:', (dup[0] == l[0])
+
+
+"""
+custom iterator by class and via generator method
+"""
+
+
+# class Counter:
+#     def __init__(self, low, high):
+#         self.current = low
+#         self.high = high
+#
+#     def __iter__(self):
+#         return self
+#
+#     def next(self): # Python 3: def __next__(self)
+#         if self.current > self.high:
+#             raise StopIteration
+#         else:
+#             self.current += 1
+#             return self.current - 1
+#
+#
+# for c in Counter(3, 8):
+#     print c
+
+# def counter(low, high):
+#     current = low
+#     while current <= high:
+#         yield current
+#         current += 1
+#
+# for c in counter(3, 8):
+#     print c
+
+
+"""
+mro in python
+it will print first value match according to mro
+"""
+# class Base1(object):
+#     def amethod(self): print "Base1"
+#
+# class Base2(Base1):
+#     pass
+#
+# class Base3(Base1):
+#     def amethod(self): print "Base3"
+#
+# class Derived(Base2,Base3):
+#     pass
+#
+# # instance = Derived()
+# # instance.amethod()
+# print Derived.__mro__
+# """above line support only if you  have written like class_name(object)"""
+
+# class A:
+#     x = 'a'
+# class B(A):
+#     pass
+# class C(A):
+#     pass
+# class D(B, C):
+#     x = 'd'
+# # print D.__mro__
+# print D.x
+
+
+"""
+slots in python
+
+slots avoid anything addition to python object  ,like in string
+"""
+# class Test1(object):   #Must be new-style class!
+#     __slots__ = ['x', 'y']
+# #     pass
+# pt = Test1()
+# # print dir(pt)
+# pt.x = 1
+# # print pt.x
+# pt.z = 2
+# print pt.z
+# import operator
+#
+
+"""
+dict operation
+"""
+# dic = {'c':4,'b':7}
+# # for k in dic:
+# #     print k
+# #     print dic[k]
+# #     print v
+#
+# # s_dict = sorted(dic.items(),key = operator.itemgetter(1))
+# s_dict = sorted(dic.items(),key = dic.get)
+# print s_dict
+
+
+"""
+file operation/read heavy file/check if file exists
+"""
+
+# fp = open('testfile.txt')
+# for item in fp.readlines():
+#     print type(item)
+#
+
+# def readInChunks(fileObj, chunkSize=2048):
+#     """
+#     Lazy function to read a file piece by piece.
+#     Default chunk size: 2kB.
+#     """
+#     while True:
+#         data = fileObj.read(chunkSize)
+#         if not data:
+#             break
+#         yield data
+#
+# f = open('bigFile')
+# for chuck in readInChunks(f):
+#     do_something(chunk)
+
+# import os.path
+# print os.path.isfile('testfile1.txt')
+
+
+"""
+check duplicate in list
+"""
+# a = [x * x for x in range(10) if x >= 2]
+# print a
+
+# l = [22, 13, 45, 50, 98, 69, 43, 44, 1, 43]
+#
+# print set([x for x in l if l.count(x) > 1])
+
+# a = [1, 2, 3, 2, 1, 5, 6, 5, 5, 5]
+# print a.index(2)
+#
+# import collections
+# print [item for item, count in collections.Counter(a).items() if count > 1]
+
+## [1, 2, 5]
+#
+# def f():
+#     global s
+#     print s
+#     s = 'me too'
+#     print s
+# s = "I hate spam"
+# f()
+
+"""
+checking for global variables/scope
+"""
+# def foo(x, y):
+#     global a
+#     a = 42
+#     x,y = y,x
+#     b = 33
+#     b = 17
+#     c = 100
+#     print a,b,x,y
+#
+# a,b,x,y = 1,15,3,4
+# foo(17,4)
+# print a,b,x,y
+# print s
+
+"""
+__init__ and super
+"""
+
+
+class Base(object):
+    #     import pdb
+    #     pdb.set_trace()
+
+    def __init__(self):
+        print "Base created"
+
+
+class ChildA(Base):
+
+    def __init__(self):
+        print "Child created"
+        Base.__init__(self)
+
+
+class ChildB(ChildA):
+    #     import pdb
+    #     pdb.set_trace()
+
+    def __init__(self):
+        super(ChildB, self).__init__()
+
+# ChildA()
+
+ChildB()
+# from collections import defaultdict
+# dic = {}
+# dic = defaultdict(list)
+# print dic[0]
+
+# import os
+
+"""
+write file to a folder
+"""
+# fp  = open('C:/Users/gur40998/Desktop/djangorocks/xy.txt','wb')
+# fp.write("this is test")
+# print "done"
+
+# str = "0000000this is 0000000 string example....wow!!!"
+# print str.strip( '0' )
+
+"""
+fibonacci/fact seq
+"""
+
+# def fib():
+#     a, b = 0, 1
+#     while True:            # First iteration:
+#         yield a            # yield 0 to start with and then
+#         a, b = b, a + b
+#
+# a = fib()
+# for i in range(10):
+#     print a.next()
+
+# def fac(n):
+#     if n == 0:
+#         return 1
+#     else:
+#         return n * fac(n-1)
+#
+# x = fac(5)
+# print x
+
+
+# """
+# interview question
+# """
+# l1 = [1,2,3,4,5]
+# l2 = [10,20,30,40,50]
+# l3 = [100,200,300,400,500]
+# l4 = []
+# for i in zip(l1,l2,l3):
+#     l4.append(i)
+# print l4
+
+
+# """
+# thread execution
+# """
+# import threading, urllib2
+# import Queue
+#
+# urls_to_load = [
+# 'http://stackoverflow.com/',
+# 'http://slashdot.org/',
+# 'http://www.archive.org/',
+# 'http://www.yahoo.co.jp/',
+# ]
+#
+# def read_url(url, queue):
+#     data = urllib2.urlopen(url).read()
+#     print('Fetched %s from %s' % (len(data), url))
+#     queue.put(data)
+#
+# def fetch_parallel():
+#     result = Queue.Queue()
+#     import pdb;pdb.set_trace()
+#     threads = [threading.Thread(target=read_url, args = (url,result)) for url in urls_to_load]
+#     for t in threads:
+#         t.start()
+#     for t in threads:
+#         t.join()
+#     return result
+#
+# def fetch_sequencial():
+#     result = Queue.Queue()
+#     for url in urls_to_load:
+#         read_url(url,result)
+#     return result
+
+# l1 = [1,2,3]
+# l2 = [4,5,6]
+# tup1 = ('l1','l2',)
+# dict1 = {tup1:"ajay"}
+# for k,v in dict1.iteritems():
+#     print dict1[k]
+
+"""
+decorator scope
+"""
+
+# a_string = ""
+#
+# def foo():
+#     print locals()
+# print globals()
+# #
+# foo()
+
+
+"""
+python supports named arguments
+"""
+
+
+# def foo(x=0, y=1):
+#     print x, y
+#
+# foo(x=2)
+
+"""
+inner function scoping, call goes sequentially ,first outer get called later inner , scope of variable will remain same
+"""
+# def outer():
+#     x = 1
+#     print "inside outer"
+#
+#
+#     def inner():
+#         print "inside inner"
+#         print x
+#     return inner
+#
+# if __name__ == '__main__':
+# #     import pdb;pdb.set_trace()
+#     foo = outer()
+#     print foo
+
+
+# import operator
+#
+# l1 = [[14,2],[1,1],[30,30]]
+# sort_list = sorted(l1,key = operator.itemgetter(0))
+# print sort_list
+
+
+# def makebold(fn):
+#     def wrapped():
+#         return "<b>" + fn() + "</b>"
+#     return wrapped
+#
+# @makebold
+# def hello():
+#     return "hello world"
+# print hello()
+# def addstr(fn):
+#     def wrapper(*args):
+#         return 'abc'+str(fn(*args))
+#     return wrapper
+#
+# @addstr
+# def hello(x,y,z):
+#     return   x+y+z
+#
+# x = hello(2,3,6)
+# print x
+
+"""
+class intro
+"""
+
+# class Customer:
+#     def __init__(self,name):
+#         self.name = name
+#         self.balance = 0
+#
+#     def setbalance(self,balance = 0):
+#         self.balance = balance
+#         print self.balance
+#
+#     def withdraw(self,amt):
+#         self.balance -= amt
+#         print self.balance
+#
+#     def deposit(self,amt):
+#         self.balance = self.balance + amt
+#         print self.balance
+#
+# obj1 = Customer('ajay')
+# obj1.setbalance(200)
+# obj1.deposit(1000)
+# obj1.withdraw(200)
+
+"""
+abstract class
+"""
+
+# from abc import ABCMeta, abstractmethod
+#
+# class Animal:
+#     __metaclass__ = ABCMeta
+#
+#     @abstractmethod
+#     def say_something(self): print "hi"
+#
+# class Cat(Animal):
+#     def say_something(self):
+#         return "Miauuu!"
+#
+# # anim_obj = Animal()
+# # anim_obj.say_something()
+# c = Cat()
+# print c.say_something()
+
+
+"""
+mro
+"""
+#
+# class Base1:
+# #     def amethod(self):
+# #         print "Base1"
+#     pass
+#
+# class Base2(Base1):
+# #     def amethod(self):
+# #         print "Base2"
+#         pass
+#
+# class Base3(Base1):
+#     pass
+# #     def amethod(self):
+# #         print "Base3"
+# #     pass
+#
+# class Derived(Base2,Base3):
+# #     def amethod(self):
+# #         print "Derived"
+#     pass
+#
+# instance = Derived()
+# instance.amethod()
+
+
+"""
+list dict and set comprehension
+"""
+
+
+# l1 = [i*2 for i in range(10) if i%2==0]
+# print l1
+
+# d1 = {i:i+2 for i in range(4)}
+# print d1
+
+
+# print set(i for i in 'aabc')
+# print {i:ord(i) for i in 'abc'}
+
+
+# class Vehicle(object):
+#     @staticmethod
+#     def makesound():
+#         print "gurrrrrrrrrrrrrrrrr"
+#
+# class Car(Vehicle):
+# #     no_of_wheels = 4
+#     @classmethod
+#     def wheel_detail(cls):
+#         cls.no_of_wheels = 4
+#
+# class Bike(Vehicle):
+#     @classmethod
+#     def wheel_detail(cls):
+#         cls.no_of_wheels = 2
+#
+# vehobj = Vehicle()
+# vehobj.
+# Vehicle.makesound()
+
+
+# def print_list():
+#     l1 = []
+#     for i in range(10):
+#         l1.append(i)
+#     return l1
+
+"""
+shallow vs deep copy
+"""
+import copy
+
+# a  = [1,2,3,4]
+# #
+# # b = {'a':1,'b':1}
+# # l2 = (['a'],['a'],['b'])
+# # print set(l2)
+#
+# make_set = {(1),(1)}
+# print make_set
+
+#
+# a = copy.copy(b)
+# print  id(a)
+# print id(b)
+
+# if a is b:
+#     print "true"
+# else:
+#     print "false"
+#
+# import copy
+#
+# a="deepak"
+# b=1,2,3,4
+# c=[1,2,3,4]
+# d={1:10,2:20,3:30}
+#
+# a1=copy.copy(a)
+# b1=copy.copy(b)
+# c1=copy.copy(c)
+# d1=copy.copy(d)
+#
+# print a is a1
+# print "immutable - id(a)==id(a1)",id(a)==id(a1)
+# print "immutable   - id(b)==id(b1)",id(b)==id(b1)
+# print "mutable - id(c)==id(c1)",id(c)==id(c1)
+# print "mutable   - id(d)==id(d1)",id(d)==id(d1)
+
+
+"""
+frozen set
+"""
+
+# simple_set = {'ajay','boby','rsr'}
+# froz_set = frozenset(simple_set)
+# print froz_set
+
+
+"""
+logger module in python
+"""
+# import logging
+# logging.basicConfig(level=logging.INFO)
+# logger = logging.getLogger("mySnake.log")
+#
+# logger.info('Start reading database')
+# # read database here
+#
+# records = {'john': 55, 'tom': 66}
+# logger.info('Records: %s', records)
+# logger.info('Updating records ...')
+# # update records here
+#
+# logger.info('Finish updating records')
+
+
+# import logging
+# logging.basicConfig(filename='example2.log',level=logging.DEBUG)
+# # logging.debug('This message should go to the log file')
+# # logging.info('So should this')
+# # logging.warning('And this, too')
+# records = []
+# j = 0
+# for i in range(10):
+#     try:
+#         result = i / j
+#
+#         logging.info(result)
+#     except ZeroDivisionError:
+#         logging.info("division by zero!")
+#         j += 1
+# #     records.append(i)
+# #     logging.info('Records: %s', records)
+#     print "written"
+
+
+# j = 0
+# if j == 0:
+#     res = 1/j
+# else:
+#     print "exception"
+#
+# j += 1
+# print j
+
+"""
+decorator
+"""
+
+# '413625'
+
+
+# def makebold(fn):
+#     print '1'
+#
+#     def wrapped():
+#         print '2'
+#         return "<b>" + fn() + "</b>"
+#     print '3'
+#     return wrapped
+#
+# # def makeitalic(fn):
+# #     def wrapped():
+# #         return "<i>" + fn() + "</i>"
+# #     return wrapped
+#
+# print '4'
+#
+#
+# @makebold
+# # @makeitalic
+# def hello():
+#     print '5'
+#     return "hello world"
+# print '6'
+# print hello()
+
+
+# def logging_decorator(func):
+# #     import pdb;pdb.set_trace()
+#     def wrapper():
+#         wrapper.count += 1
+#         print "The function I modify has been called {0} times(s).".format(
+#               wrapper.count)
+#         func()
+#     wrapper.count = 0
+#     return wrapper
+#
+#
+# def a_function():
+#     print "I'm a normal function."
+#
+# modified_function = logging_decorator(a_function)
+# print modified_function()
+# # modified_function()
+
+# def addbonus(func):
+# import pdb;pdb.set_trace()
+#     def wrapper(x,y):
+#         return 12+func(x,y)
+#     return wrapper
+#
+# @addbonus
+# def add(x,y):
+#     return x+y
+#
+# print add(10,20)
+
+
+"""
+parameterized decorator
+"""
+'12635847'
+
+
+# def addbonus(str_abc):
+#     print '2'
+#
+#     def first_wrap(fun):
+#         print '3'
+#
+#         def wrapper(x, y):
+#             print '4'
+#             return str_abc + str(fun(x, y))
+#         print '5'
+#         return wrapper
+#     print '6'
+#     return first_wrap
+#
+# print '1'
+#
+#
+# @addbonus('percentage')
+# def add(x, y):
+#     print '7'
+#     return x + y
+# print '8'
+#
+# print add(10, 20)
+
+
+"""
+oops concept
+"""
+# class TestAccessibility:
+#     def __init__(self):
+#         self.value = 4
+#
+#     def __del__(self):
+#         return self
+#
+#     def findresult(self):
+#         print "hi"
+#
+# obj1 = TestAccessibility()
+# print dir(obj1)
+
+
+"""
+usage of super
+"""
+
+# class TestSuper(object):
+#     def __init__(self):
+#         print "hi"
+#     def saysomething(self):
+#         print "inside TestSuper"
+#
+#
+# class UseSuper(TestSuper):
+#     def __init__(self):
+#         print "loop inside"
+# #         super(UseSuper,self).__init__()
+#     def saysomething(self):
+#         print "inside reestSuper"
+# obj = UseSuper()
+# obj.saysomething()
+
+"""
+mro/inheritence in python
+"""
+
+# class A(object):
+#     def saysomething(self):
+#         print "A"
+#
+# class B(A):
+#         pass
+#
+# class C(A):
+#     pass
+# #     def saysomething(self):
+# #         print "C"
+#
+# class D(B,C):
+# #     def saysomething(self):
+#         pass
+#
+# d = D()
+# d.saysomething()
+#
+
+
+#
+# import sys
+# print sys.getsizeof()
+#
+# seta = {1,2,3,4,5}
+# setb = {2,4,5,6}
+# print seta&setb
+
+# import gc
+# collected = gc.collect()
+# print "Garbage collector: collected %d objects." % (collected)
+
+# import sys, gc
+# dict1 = {'a':1,'b':2,'c':3}
+# dict1[0] = dict1
+# print dict1[0]
+
+# def make_cycle():
+#     l = { }
+#     l[0] = l
+#     print l[0]
+#
+# def main():
+#     collected = gc.collect()
+#     print "Garbage collector: collected %d objects." % (collected)
+#     print "Creating cycles..."
+#     for i in range(10):
+#         make_cycle()
+#     collected = gc.collect()
+#     print "Garbage collector: collected %d objects." % (collected)
+#
+# if __name__ == "__main__":
+#     ret = main()
+#     sys.exit(ret)
+#
+#
+# print type(set([]))
+
+"""
+sys module
+"""
+# import sys
+# for i in (sys.stdin, sys.stdout, sys.stderr):
+#     print(i)
+
+# from subprocess import call
+# print call(["ls", "-l"])
+
+# import subprocess
+# print subprocess.Popen("echo Hello World", shell=True,
+# stdout=subprocess.PIPE).stdout.read()
+
+
+# import traceback
+# try:
+#     print "inside try"
+#     var = int('k')
+#     print "ggggggg"+var
+# except Exception as TypeError:
+#     print TypeError.message
+# #     var = traceback.format_exc()
+# # print var
+# print "move ahead"
+
+# import sys
+# print sys.stderr.write('hi')
+#
+"""
+reading and writting values in config file
+https://docs.python.org/2/library/configparser.html#ConfigParser.ConfigParser.get
+https://pymotw.com/2/ConfigParser/
+"""
+
+import ConfigParser
+
+# config = ConfigParser.RawConfigParser()
+config = ConfigParser.SafeConfigParser()
+# config.add_section('Section1')
+# config.set('Section1', 'an_int', '15')
+# config.set('Section1', 'a_bool', 'true')
+# config.set('Section1', 'a_float', '3.1415')
+# config.set('Section1', 'baz', 'fun')
+# config.set('Section1', 'bar', 'Python')
+# config.set('Section1', 'foo', '%(bar)s is %(baz)s!')
+#
+# # Writing our configuration file to 'example.cfg'
+# with open('example.conf', 'wb') as configfile:
+#     config.write(configfile)
+#     print "values written"
+
+# config.read('example.conf')
+# print config.get('Section1', 'foo',1)
+# print config.get('Section1', 'foo', 0, {'bar': 'Documentation',
+#                                         'baz': 'evil'})
+
+
+"""
+set example in python
+"""
+# s1 = {13, 2, 5, 3, 1, 2, 1, 2, 6}
+# s1.add(4)
+# print s1
+
+# items = set()
+
+# Add three strings.
+# items.add(4)
+# items.add(2)
+# items.add(3)
+# items.add("cat")
+# items.add("dog")
+# items.add("gerbil")
+# print items
+
+
+a = 34
+b = 21
+print a
+while a > 0:
+    a = b
+    print a
+    b = a - b
+
+    print a, b

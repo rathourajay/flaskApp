@@ -1,0 +1,6 @@
+MODULES_MANAGER_V2
+cms|C:\Users\gur40998\workspace\cms_integration_iam\cms.py
+global_config|C:\Users\gur40998\workspace\cms_integration_iam\global_config.py
+iam_proxy|C:\Users\gur40998\workspace\cms_integration_iam\iam_proxy.py
+iam_proxy_common|C:\Users\gur40998\workspace\cms_integration_iam\iam_proxy_common.py
+logger|C:\Users\gur40998\workspace\cms_integration_iam\logger.py

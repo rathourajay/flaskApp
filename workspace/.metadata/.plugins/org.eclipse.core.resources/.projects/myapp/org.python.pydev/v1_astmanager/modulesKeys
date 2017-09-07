@@ -1,0 +1,15 @@
+MODULES_MANAGER_V2
+dshb|C:\Users\gur40998\workspace\myapp\dshb.py
+heartbeat|C:\Users\gur40998\workspace\myapp\heartbeat.py
+login.__init__|C:\Users\gur40998\workspace\myapp\login\__init__.py
+login.admin|C:\Users\gur40998\workspace\myapp\login\admin.py
+login.forms|C:\Users\gur40998\workspace\myapp\login\forms.py
+login.migrations.__init__|C:\Users\gur40998\workspace\myapp\login\migrations\__init__.py
+login.models|C:\Users\gur40998\workspace\myapp\login\models.py
+login.tests|C:\Users\gur40998\workspace\myapp\login\tests.py
+login.views|C:\Users\gur40998\workspace\myapp\login\views.py
+manage|C:\Users\gur40998\workspace\myapp\manage.py
+myapp.__init__|C:\Users\gur40998\workspace\myapp\myapp\__init__.py
+myapp.settings|C:\Users\gur40998\workspace\myapp\myapp\settings.py
+myapp.urls|C:\Users\gur40998\workspace\myapp\myapp\urls.py
+myapp.wsgi|C:\Users\gur40998\workspace\myapp\myapp\wsgi.py

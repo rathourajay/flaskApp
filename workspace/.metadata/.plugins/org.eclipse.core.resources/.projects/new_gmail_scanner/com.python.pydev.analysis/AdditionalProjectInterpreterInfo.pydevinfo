@@ -1,0 +1,54 @@
+-- VERSION_4
+-- START DISKCACHE
+C:\Users\gur40998\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\new_gmail_scanner\com.python.pydev.analysis\v2_indexcache
+gmail_app.tests|1477461306993|C:\Users\gur40998\workspace\new_gmail_scanner\gmail_app\tests.py
+gmail_app.views|1477461901073|C:\Users\gur40998\workspace\new_gmail_scanner\gmail_app\views.py
+manage|1477461294073|C:\Users\gur40998\workspace\new_gmail_scanner\manage.py
+new_gmail_scaner.settings|1477461314091|C:\Users\gur40998\workspace\new_gmail_scanner\new_gmail_scaner\settings.py
+gmail_app.admin|1477461304200|C:\Users\gur40998\workspace\new_gmail_scanner\gmail_app\admin.py
+gmail_app.urls|1477461307526|C:\Users\gur40998\workspace\new_gmail_scanner\gmail_app\urls.py
+gmail_app.__init__|1477461303051|C:\Users\gur40998\workspace\new_gmail_scanner\gmail_app\__init__.py
+new_gmail_scaner.__init__|1477461312141|C:\Users\gur40998\workspace\new_gmail_scanner\new_gmail_scaner\__init__.py
+gmail_app.models|1477461305912|C:\Users\gur40998\workspace\new_gmail_scanner\gmail_app\models.py
+gmail_app.apps|1477461305393|C:\Users\gur40998\workspace\new_gmail_scanner\gmail_app\apps.py
+new_gmail_scaner.wsgi|1477461315610|C:\Users\gur40998\workspace\new_gmail_scanner\new_gmail_scaner\wsgi.py
+new_gmail_scaner.urls|1477561904644|C:\Users\gur40998\workspace\new_gmail_scanner\new_gmail_scaner\urls.py
+gmail_app.migrations.__init__|1477461321334|C:\Users\gur40998\workspace\new_gmail_scanner\gmail_app\migrations\__init__.py
+-- END DISKCACHE
+-- START DICTIONARY
+7
+3=gmail_app.views
+4=gmail_app.apps
+7=GmailAppConfig
+2=new_gmail_scaner.wsgi
+6=new_gmail_scaner.urls
+1=new_gmail_scaner.settings
+5=gmail_app.urls
+-- END DICTIONARY
+-- START TREE 1
+20
+all|1|ALLOWED_HOSTS!11@
+app|1|application!19@
+bas|1|BASE_DIR!11@
+dat|1|DATABASES!11@
+deb|1|DEBUG!11@
+fir|1|first_page!26@
+get|1|get_server_response!26@
+gma|2|gmail_scanner!26@GmailAppConfig!33@
+ins|1|INSTALLED_APPS!11@
+lan|1|LANGUAGE_CODE!11@
+mid|1|MIDDLEWARE_CLASSES!11@
+pro|1|PROJECT_PATH!11@
+roo|1|ROOT_URLCONF!11@
+sec|1|SECRET_KEY!11@
+sta|1|STATIC_URL!11@
+tem|1|TEMPLATE_DIRS!11@
+tim|1|TIME_ZONE!11@
+url|2|urlpatterns!43@urlpatterns!51@
+use|3|USE_I18N!11@USE_L10N!11@USE_TZ!11@
+wsg|1|WSGI_APPLICATION!11@
+-- END TREE
+-- START TREE 2
+1
+nam|1|name!7&35@
+-- END TREE

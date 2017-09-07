@@ -1,0 +1,4 @@
+cloudlet_id,lat,long,status
+cl13,89,422,REGISTERED
+cl12,23,81,ACTIVE
+cl14,43,54,DEREGISTERED

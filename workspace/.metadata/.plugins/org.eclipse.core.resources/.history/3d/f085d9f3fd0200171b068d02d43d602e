@@ -1,0 +1,237 @@
+import os
+import sys
+import json
+import logging
+import threading
+import httplib
+import requests
+from flask import Flask, request, Response
+from functools import wraps
+
+MEC_CLOUDLET_CATALOG_IP = "0.0.0.0"
+MEC_CLOUDLET_CATALOG_PORT = 0xecba
+
+cloudlet_catalog = Flask(__name__)
+
+from iam_proxy import OAuthToken, IAMProxy, TokenManager
+
+# Initialize connections with IAM
+iam_proxy = None
+token_manager = None
+
+
+def init_IAM_connections():
+    # Return immediately if IAM proxy is not plugged in
+    if(not IAM_PLUGGED_IN):
+        return
+
+    global iam_proxy, token_manager
+    iam_proxy = IAMProxy(IAM_URL_PATTERN % (MEC_IAM_IP, MEC_IAM_PORT))
+
+    # Register Self with IAM
+    self_hosted_endpoint = SELF_HOSTED_URL_PATTERN % (SELF_IP,
+                                                      MEC_CLOUDLET_CATALOG_PORT, SELF_HOSTED_AT)
+    target_apis = []
+    token = iam_proxy.register_module(MODULE_NAME,
+                                      self_hosted_endpoint, target_apis, SELF_USER, SELF_PASSWORD)
+
+    if(token.get_status() == True):
+        logging.info('%s registered successfully with IAM'
+                     % (MODULE_NAME))
+        logging.debug('Access token received: {}'
+                      .format(token.get_access_token()))
+    else:
+        logging.error('%s failed to register with IAM'
+                      % (MODULE_NAME))
+        logging.error('error: {}'
+                      .format(token.get_errorjson()))
+
+    # Start Token Management
+    token_manager = TokenManager(token.get_access_token(),
+                                 token.get_refresh_token(), token.get_expiry(), iam_proxy)
+
+    token_manager.start()
+
+
+# IAM Token Validation decorator
+# TODO - To be replaced with a parameterized decorator
+def iam_token_validate(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        global iam_proxy
+        if not 'Authorization' in request.headers:
+            # Abort
+            auth_failure_response = {"error_code": "401",
+                                     "error_message": "Authorization Required"}
+#             return Response(json.dumps(auth_failure_response),
+#                             mimetype='application/json',
+#                             status=requests.codes.unauthorized)
+            return Response(json.dumps(auth_failure_response),
+                            mimetype='application/json',
+                            status=httplib.UNAUTHORIZED)
+
+        bearer_data = request.headers['Authorization']\
+            .encode('ascii', 'ignore')
+        bearer_token = str.replace(str(bearer_data), 'Bearer ', '')
+
+        # Get IAM module to validate the token
+        token = iam_proxy.is_token_valid(bearer_token)
+        if(token.get_status() == True):
+            return f(*args, **kwargs)
+        else:
+            # Abort
+            #             return Response(json.dumps(token.get_errorjson()),
+            #                             mimetype='application/json',
+            #                             status=requests.codes.unauthorized)
+            return Response(json.dumps(token.get_errorjson()),
+                            mimetype='application/json',
+                            status=httplib.UNAUTHORIZED)
+    return decorated_function
+
+
+class CloudletCatalogDB:
+
+    #     def __init__(self, db_file, usage_file):
+    def __init__(self, db_file):
+        self.lock = threading.Lock()
+        self.file = db_file
+#         self.usage_file = usage_file
+        self.mtime = 0
+
+        self.load_db()
+
+    def load_db(self):
+        mtime = os.stat(self.file).st_mtime
+        if mtime != self.mtime:
+            self.mtime = mtime
+            with open(self.file) as app_file:
+                logging.info(
+                    "Loading application policy database %s" % self.file)
+                self.db = json.load(app_file)
+                logging.debug(json.dumps(self.db))
+
+    def load_cloudlets(self):
+        self.lock.acquire()
+        self.load_db()
+        self.lock.release()
+
+    def cloudlets(self):
+        self.load_cloudlets()
+        return self.db
+
+    def update_status(self, cloudlet_id, status):
+        for db_cloudlet_dict in self.db['cloudlets']:
+
+            if db_cloudlet_dict["name"] == cloudlet_id:
+                db_cloudlet_dict['status'] = status
+                with open(self.file, 'w') as app_file:
+                    json.dump(self.db, app_file)
+                return True
+        return False
+
+    def load_usage(self):
+        with open(self.usage_file) as usage_file:
+            logging.info(
+                "Loading application policy database %s" % self.usage_file)
+            self.usage_db = json.load(usage_file)
+            logging.debug(json.dumps(self.usage_db))
+        return self.usage_db
+
+
+@cloudlet_catalog.route("/api/v1.0/centralrepo/cloudletcatalog/cloudlets", methods=["GET"])
+def cloudlets():
+    return json.dumps(cc_db.cloudlets())
+
+
+@cloudlet_catalog.route("/api/v1.0/centralrepo/cloudletcatalog/<cloudlet_id>", methods=["GET"])
+def details(cloudlet_id):
+    for db_cloudlet_dict in cc_db.cloudlets()['cloudlets']:
+        if db_cloudlet_dict["name"] == cloudlet_id:
+            return json.dumps(db_cloudlet_dict)
+#     return json.dumps(cc_db.cloudlets()['cloudlets'][cloudlet_id])
+
+
+@iam_token_validate
+@cloudlet_catalog.route("/api/v1.0/centralrepo/cloudletcatalog/<cloudlet_id>", methods=["PUT"])
+def update(cloudlet_id):
+    try:
+        status = request.args.get('status')
+        ret_val = cc_db.update_status(cloudlet_id, status)
+        if ret_val:
+            resp = Response(
+                response="CLOUDLET UPDATION SUCCESS", status=httplib.OK)
+        else:
+            resp = Response(
+                response="CLOUDLET NOT FOUND", status=httplib.NOT_FOUND)
+    except:
+        resp = Response(
+            response="CLOUDLET UPDATION FAILED", status=httplib.INTERNAL_SERVER_ERROR)
+    return resp
+
+
+@cloudlet_catalog.route("/api/v1.0/centralrepo/cloudletcatalog/capacity", methods=['GET'])
+def capacity():
+
+    try:
+        cloudlet_ids = request.args.get('cloudlet_ids')
+        cloudlet_ids = eval(cloudlet_ids)
+        data = {}
+        for cloudlet_id in cloudlet_ids:
+            data[cloudlet_id] = cc_db.cloudlets()['cloudlets'][
+                cloudlet_id]['resource']
+
+        resp = json.dumps(data)
+    except:
+        resp = Response(
+            response="UNABLE TO FETCH CAPACITY OF CLOUDLETS", status=httplib.INTERNAL_SERVER_ERROR)
+    return resp
+
+
+@cloudlet_catalog.route("/api/v1.0/centralrepo/cloudletcatalog/usage", methods=['GET'])
+def usage():
+
+    try:
+        usage = cc_db.load_usage()['usage']
+        cloudlet_ids = request.args.get('cloudlet_ids')
+        cloudlet_ids = eval(cloudlet_ids)
+        data = {}
+        for cloudlet_id in cloudlet_ids:
+            data[cloudlet_id] = usage[cloudlet_id]
+        resp = json.dumps(data)
+
+    except:
+        resp = Response(
+            response="UNABLE TO FETCH USAGE OF CLOUDLETS", status=httplib.INTERNAL_SERVER_ERROR)
+    return resp
+
+
+if len(sys.argv) < 4:
+    print("Usage: %s <self_fqdn> <iam_ip> <cloudlet_catalog_db>" %
+          sys.argv[0])
+    sys.exit(1)
+
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)-15s %(levelname)-8s %(filename)-16s %(lineno)4d %(message)s')
+
+SELF_IP = sys.argv[1]
+MEC_IAM_IP = sys.argv[2]
+
+# cc_db = CloudletCatalogDB(sys.argv[3], sys.argv[4])
+cc_db = CloudletCatalogDB(sys.argv[3])
+
+MODULE_NAME = "CloudletCatalog"
+IAM_PLUGGED_IN = True
+MEC_IAM_PORT = 20010
+IAM_URL_PATTERN = 'http://%s:%d'
+SELF_HOSTED_URL_PATTERN = 'http://%s:%d%s'
+SELF_HOSTED_AT = '/api/v1.0/centralrepo/cloudletcatalog'
+SELF_USER = 'cloud_api_admin'
+SELF_PASSWORD = 'admin123'
+
+if(IAM_PLUGGED_IN):
+    init_IAM_connections()
+
+# Start the Flask web server (HTTP)
+if __name__ == '__main__':
+    cloudlet_catalog.run(
+        host="0.0.0.0", port=MEC_CLOUDLET_CATALOG_PORT, debug=True, threaded=True)

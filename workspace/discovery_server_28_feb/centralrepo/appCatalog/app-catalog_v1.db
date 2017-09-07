@@ -1,0 +1,22 @@
+{
+  "applications": {
+    "ens.latency-test": {
+      "enabled": "Y",
+      "client-regions": ["NA", "EU"],
+      "low-latency": "N"
+    },
+    "mec.echo-server": {
+      "enabled": "Y",
+      "client-regions": ["NA", "AS"],
+      "low-latency": "Y"
+    },
+    "ens.sample-app": {
+      "enabled": "Y",
+      "client-regions": ["NA", "AS"],
+      "low-latency": "Y",
+      "metadata": {"app-metadata": {"microservices": {"app-todomanager": {"exposed": {"network": {"external-network1": "app@client"}, "events": {"external-event1": "app@client", "external-event2": "app@client"}}, "resources": "sample-profile"}, "app-todomanager-helper-tz": {"exposed": {"network": {"external-network1": "app@client"}, "events": {"external-event1": "app@client"}}, "resources": "sample-profile"}, "service-time": {"exposed": {"network": {"external-network1": "app@client"}, "events": {"external-event1": "app@client"}}, "resources": "sample-profile"}, "sampleapi": {"exposed": {"network": {"external-network1": "app@client"}, "events": {"external-event1": "app@client"}}, "resources": "sample-profile"}}}, "microservice-metadata": {"app-todomanager": {"containers": {"app-todomanager": {"network": {"todo-network": {"port": "6000", "protocol": "http"}}, "events": {"todo_id": {"api": "/todo/<todo_id>"}, "todo": {"api": "/todo"}}, "resources": {"sample-profile": {"memory": "256Mi", "cpu": "250m"}}, "image": "anuyog27/app-todomanager"}}, "tenancy": "single", "external": {"network": {"external-network1": "app-todomanager.todo-network"}, "events": {"external-event1": "app-todomanager.todo", "external-event2": "app-todomanager.todo_id"}}}, "app-todomanager-helper-tz": {"containers": {"app-todomanager-helper-tz": {"network": {"time-zone": {"port": "10001", "protocol": "http"}}, "events": {"time-zone-api": {"api": "/tz"}}, "resources": {"sample-profile": {"memory": "256Mi", "cpu": "250m"}}, "image": "anuyog27/app-todomanager-helper-tz"}}, "tenancy": "single", "external": {"network": {"external-network1": "app-todomanager-helper-tz.time-zone"}, "events": {"external-event1": "app-todomanager-helper-tz.time-zone-api"}}}, "service-time": {"containers": {"service-time": {"network": {"time1": {"port": "10003", "protocol": "tcp"}, "time": {"port": "10002", "protocol": "http"}}, "events": {"time-api": {"api": "/time"}}, "resources": {"sample-profile": {"memory": "256Mi", "cpu": "250m"}}, "image": "anuyog27/service-time"}}, "tenancy": "single", "external": {"network": {"external-network1": "service-time.time"}, "events": {"external-event1": "service-time.time-api"}}}, "sampleapi": {"containers": {"sampleapi1": {"network": {"network-api1": {"port": "8091", "protocol": "http"}, "network-api2": {"port": "8092", "protocol": "tcp"}}, "events": {"sample_api1": {"api": "/api"}}, "resources": {"sample-profile": {"memory": "256Mi", "cpu": "250m"}}, "image": "anuyog27/sampleapi1"}}, "tenancy": "single", "external": {"network": {"external-network2": "sampleapi1.network-api2", "external-network1": "sampleapi1.network-api1"}, "events": {"external-event1": "sampleapi1.sample_api1"}}}}}
+    }
+  }
+}
+
+

@@ -1,0 +1,267 @@
+[{
+	"applicationName": "OCRService",
+	"userId": "markMiller",
+	"icon": "icon.png",
+	"regions": [
+		"EU",
+		"IN"
+	],
+	"rating": 5,
+	"category": "OCR",
+	"owner": "Mark Miller", 
+	"releaseDate": "17-Jan-2016",
+	"description": "OCR Microservice Description",
+	"documentation": "URL of User Manual",
+	"onBoardStatus": "Pending",
+	"enable": "True",
+	"contextPath": "/dtedge/index.html",
+	"applicationType": "Event",
+	"stage": "Build/Certify",
+	"lowLatency": "Y",
+	"appAtCloudUrl": "tcp://127.0.0.1:65000",
+	"metadata": {
+		"appMetadata": {
+			"microservices": [{
+					"microServiceName": "app-todomanager",
+					"useAsLib": "Y",
+					"subscribed":"Y",
+					"exposed": {
+						"network": [
+						{
+							"name": "external-network1",
+							"exposedTo": ["app@client","<microservice name>","<cidr value>"]
+						}],
+						"events": [{
+							"name": "external-event",
+							"exposedTo": ["app@client","<microservice name>","<cidr value>"]
+						}]
+					},
+					"resources":  [{
+							"name": "resource-name1",
+							"workloadName": "workloadName1"
+						}]
+				}
+
+			]
+		},
+		"microserviceMetadata": [
+             	{ 
+			    "microServiceName":"app-todomanager",
+			    "tenancy": "single",
+			    "metadata":{
+					"external": {
+						"events": [
+					 		"event name 1",
+							"event name 2"
+						],
+						"httpApis": [
+							"api1",
+							"api2"
+						],
+						"networks": [
+							"network binding name 1",
+							"network binding name 2"
+						]
+					},
+					
+					"workloads": [{
+						"workloadName": "Workload-1",
+						"image":"Image Path",
+						"source": {
+							"username": "markmiller",
+							"password": "abcd1234",
+							"sourceRepo": "GitHub/Bitbucket",
+							"path": "Path to source code"
+						},
+						"events": [
+
+							{
+								"name": "event name first",
+								"reference": "fn:<module.function>"
+							},
+
+							{
+								"name": "event name second",
+								"reference": "fn:<module.function>"
+							}
+
+						],
+						"networks": [{
+							"name": "Network Binding Name",
+							"port": "80",
+							"protocol": "tcp"
+						}, {
+							"name": "Second Network Binding Name",
+							"port": "80",
+							"protocol": "tcp"
+						}],
+
+						"httpApis": {
+							"port": "80",
+							"endpoints": [{
+								"name": "Workload-Name-api-1",
+								"contextPath": "api1-reference"
+
+							}]
+
+						},
+
+						"resources": [{
+								"name": "Profile - Name",
+								"cpu": "1",
+								"memory": "1Gi",
+								"storage": "10",
+								"bandwidth": "4"
+							}, {
+								"name": "Second Profile Name",
+								"cpu": "1",
+								"memory": "1Gi",
+								"storage": "10",
+								"bandwidth": "4"
+							}
+
+						]
+					}]
+      
+			    }
+              }
+
+
+			]
+		
+	}
+
+},{
+	"applicationName": "ens.latency",
+	"userId": "markMiller",
+	"icon": "icon.png",
+	"regions": [
+		"EU",
+		"AS"
+	],
+	"rating": 5,
+	"category": "OCR",
+	"owner": "Mark Miller", 
+	"releaseDate": "17-Jan-2016",
+	"description": "OCR Microservice Description",
+	"documentation": "URL of User Manual",
+	"onBoardStatus": "Pending",
+	"enable": "True",
+	"contextPath": "/dtedge/index.html",
+	"applicationType": "Event",
+	"stage": "Build/Certify",
+	"lowLatency": "Y",
+	"appAtCloudUrl": "tcp://127.0.0.1:65000",
+	"metadata": {
+		"appMetadata": {
+			"microservices": [{
+					"microServiceName": "app-todomanager",
+					"useAsLib": "Y",
+					"subscribed":"Y",
+					"exposed": {
+						"network": [
+						{
+							"name": "external-network1",
+							"exposedTo": ["app@client","<microservice name>","<cidr value>"]
+						}],
+						"events": [{
+							"name": "external-event",
+							"exposedTo": ["app@client","<microservice name>","<cidr value>"]
+						}]
+					},
+					"resources":  [{
+							"name": "resource-name1",
+							"workloadName": "workloadName1"
+						}]
+				}
+
+			]
+		},
+		"microserviceMetadata": [
+             	{ 
+			    "microServiceName":"app-todomanager",
+			    "tenancy": "single",
+			    "metadata":{
+					"external": {
+						"events": [
+					 		"event name 1",
+							"event name 2"
+						],
+						"httpApis": [
+							"api1",
+							"api2"
+						],
+						"networks": [
+							"network binding name 1",
+							"network binding name 2"
+						]
+					},
+					
+					"workloads": [{
+						"workloadName": "Workload-1",
+						"image":"Image Path",
+						"source": {
+							"username": "markmiller",
+							"password": "abcd1234",
+							"sourceRepo": "GitHub/Bitbucket",
+							"path": "Path to source code"
+						},
+						"events": [
+
+							{
+								"name": "event name first",
+								"reference": "fn:<module.function>"
+							},
+
+							{
+								"name": "event name second",
+								"reference": "fn:<module.function>"
+							}
+
+						],
+						"networks": [{
+							"name": "Network Binding Name",
+							"port": "80",
+							"protocol": "tcp"
+						}, {
+							"name": "Second Network Binding Name",
+							"port": "80",
+							"protocol": "tcp"
+						}],
+
+						"httpApis": {
+							"port": "80",
+							"endpoints": [{
+								"name": "Workload-Name-api-1",
+								"contextPath": "api1-reference"
+
+							}]
+
+						},
+
+						"resources": [{
+								"name": "Profile - Name",
+								"cpu": "1",
+								"memory": "1Gi",
+								"storage": "10",
+								"bandwidth": "4"
+							}, {
+								"name": "Second Profile Name",
+								"cpu": "1",
+								"memory": "1Gi",
+								"storage": "10",
+								"bandwidth": "4"
+							}
+
+						]
+					}]
+      
+			    }
+              }
+
+
+			]
+		
+	}
+
+}]

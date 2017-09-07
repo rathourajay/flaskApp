@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <link href="{% static "sec_data.css" %}"  rel="stylesheet" type="text/css" />
+    <title>Boston Analytics</title>
+      <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/redmond/jquery-ui.css">
+      <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+      <script src="http://www.jsviews.com/download/jsviews.js" type="text/javascript"></script>
+      <script type="text/javascript" src="http://cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
+      <script type="text/javascript" src="http://cdn.datatables.net/plug-ins/be7019ee387/integration/jqueryui/dataTables.jqueryui.js"></script>
+      <meta charset="utf-8">
+      <title>Minimal Django File Upload Example</title>
+      <script src="jquery-1.8.3.js"></script>
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+      <link rel="stylesheet" href="/resources/demos/style.css">
+      
+      <script src="{% static "jquery.dataTables.js" %}"></script>
+      <link rel="stylesheet" href="{% static 'jquery.dataTables.css' %}">
+        <script>
+		$(function() {
+			  $("#tabs").tabs();
+			  $('#stored_data').dataTable({
+				  "sPaginationType": "full_numbers"
+              });
+		});
+		 $(function() {
+			 $( "#start_datepicker" ).datepicker();
+			 });
+		 $(function() {
+             $( "#end_datepicker" ).datepicker();
+             });
+
+		</script>
+        <script type="text/javascript">
+     /*      $(document).ready(function() {
+
+  
+              $("#tablePage")
+              .tablesorter({widthFixed: false})
+              .tablesorterPager({container: $("#pager")});
+              }); */
+         
+         </script>
+
+  </head>
+  <body>
+    <div id="mainContainer" class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="width:100%; margin:0px; height:90%;">
+        <div class="container-fluid">
+            <div class="headerBg row">
+                <div id="menuIconDiv" class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                    <i class="fa fa-bars"></i>
+                </div>
+                <img id="bsotonLogo" src="{% static "boston_logo_new.png" %}" class="col-lg-2 col-md-4 col-sm-2 col-xs-4 " style="width:200px !important">
+                <span class="col-lg-5 col-md-3 col-sm-5 col-xs-3"></span>
+                <span class="welcomeUser col-lg-4  col-md-2 col-sm-4 col-xs-4">Welcome User!
+                <span style="width:4px;"></span>
+                </span>
+            </div>
+        </div>
+        <div id="tabs">
+            <ul>
+                <li><a href="#tabs-1">Extraction</a></li>
+                <li><a href="#tabs-2">View Data</a></li>
+            </ul>
+            <div id ="tabs-1" style="width:85%;" > 
+                <fieldset style="margin: auto;width: 70%;">
+                    <legend>XBRL Data Collector</legend> 
+                        {% if documents %}
+                            <ul>
+                                {% for document in documents %}
+                                    <li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    <form action={% url "get_xbrlmain" %} method="POST" enctype="multipart/form-data" style=" margin: -28px auto auto 99px;">{% csrf_token %}
+                        <table cellspacing=10>
+                                <tr>
+                                    <td> <label > Ticker Name: </label></td>
+                                    <td><input type="text" name="ticker"> 
+                                        <span  class=" advancedSearchTextBox" style=" color:#88B0D5;   font: bold 84% 'trebuchet ms',helvetica,sans-serif;"><br>
+                                        (Please enter multiple ticker names separated by comma i.e. CSCO,GOOG)</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan=2 style="text-align: center;">
+                                        Or
+                                    </td>
+                                </tr>
+                                <tr style="line-height: 20px;">
+                                    <td>
+                                        <span style="margin-top: 5px;">
+                                            Please select a file:
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <input type="file" name="file1" style=" color:#88B0D5;font: bold 84% 'trebuchet ms',helvetica,sans-serif;"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> <lable>Choose Form Type:</lable></td>
+                                    <td>
+                                        <select NAME="form_type" ID="form_type" style=" color:#88B0D5;font: bold 84% 'trebuchet ms',helvetica,sans-serif;">
+                                            <option Value="10-K" name ="10-K">10-K</option>
+                                            <option Value="10-Q" name ="10-Q">10-Q</option>
+                                            <option Value="10-K/A" name ="10-K/A">10-K/A</option>
+                                            <option Value="10-Q/A" name ="10-Q/A">10-Q/A</option>
+                                            <!-- <OPTION Value="all" name ="all">All</OPTION> -->
+                                        </select>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td><label> Start Date: </label></td>
+                                    <td>
+                                        <input type="text" name="start_date" id="start_datepicker">
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td><label> End Date: </label></td>
+                                    <td>
+                                        <input type="text" name="end_date" id="end_datepicker">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan=2 style="text-align: center;">
+                                        <input type="submit" value="Submit" style=" color:#88B0D5; width:16%; font: bold 100% 'trebuchet ms',helvetica,sans-serif; "/>
+                                    </td>
+                                </tr>
+                         </table>
+                     </form>
+                </fieldset>
+            </div>
+            <div  id ="tabs-2" style="width:85%;">
+                <fieldset style="margin: auto;width:80%;">
+                    <legend>XBRL Data Collector</legend>  
+                        <form  name = "myform" action={%url "select_commaseperated" %} method="GET" style="padding-left: 100px;" >{% csrf_token %}  
+                            <ul style="margin: auto;">
+                                <li style="float: left; padding-left: 10px; list-style: none;">
+                                    <input type ="text" value="" name="data">
+                                </li>
+                                <li style="float: left; padding-left: 10px; list-style: none;padding-top: 25px;">
+                                    <input type = "submit" value = "click">
+                                </li>
+                            </ul>
+                        </form>
+                        <div style="clear:both"></div>
+                        <div style="overflow-y: auto;height:400px;margin-top:20px;">
+                              {% if data_exists %}
+                                    <table id="stored_data">
+                                        <thead>
+	                                        <tr>
+	                                            <th>Ticker_Name</th>
+	                                            <th>Form_Type</th>
+	                                            <th>Doc_Type</th>
+	                                            <th>Filing_Date</th>
+	                                            <th>Document</th>
+	                                            <th>Converted_Flag</th>
+	                                            <th>Graph_Db</th>
+	                                            <th>Finif_Flag</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+                                        {% for i in emp_details %}
+                                            <tr>
+                                                <td>{{i.ticker_name}}</td>
+                                                <td>{{i.form_type}}</td>
+                                                <td>{{i.doc_type}}</td>
+                                                <td>{{i.filing_date}}</td>
+                                                <td><a href="{{i.document}}">{{i.document}}</td>
+                                                <td>{{i.converted_flag}}</td>
+                                                <td>{{i.graphdb}}</td>
+                                                <td>{{i.finif_flag}}</td>
+                                                
+                                            </tr>
+                                        {% endfor%}
+                                        </tbody>
+                                        </
+                                    </table>
+                                  
+                               {% elif data_false %}
+                                    <p>Data does not exists for 
+                                        <ul>
+                                            {% for i in emp_details %}
+                                                 <li> {{i.text_ticker}}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </p>
+                               {% else %}
+                               
+                            {% endif %}
+                        </div>
+                    </fieldset>
+           </div>
+        </div>
+    </div>	
+  </body>
+</html> 
+

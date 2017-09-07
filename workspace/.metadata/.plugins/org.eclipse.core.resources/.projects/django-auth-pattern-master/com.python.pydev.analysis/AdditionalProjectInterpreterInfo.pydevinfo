@@ -1,0 +1,58 @@
+-- VERSION_4
+-- START DISKCACHE
+C:\Users\gur40998\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\django-auth-pattern-master\com.python.pydev.analysis\v2_indexcache
+log.migrations.__init__|1477303550411|C:\Users\gur40998\workspace\django-auth-pattern-master\log\migrations\__init__.py
+log.views|1477303550398|C:\Users\gur40998\workspace\django-auth-pattern-master\log\views.py
+authtest.urls|1477303549428|C:\Users\gur40998\workspace\django-auth-pattern-master\authtest\urls.py
+authtest.__init__|1477303549352|C:\Users\gur40998\workspace\django-auth-pattern-master\authtest\__init__.py
+manage|1477303549340|C:\Users\gur40998\workspace\django-auth-pattern-master\manage.py
+log.__init__|1477303549611|C:\Users\gur40998\workspace\django-auth-pattern-master\log\__init__.py
+log.models|1477303550170|C:\Users\gur40998\workspace\django-auth-pattern-master\log\models.py
+authtest.settings|1477303549365|C:\Users\gur40998\workspace\django-auth-pattern-master\authtest\settings.py
+authtest.wsgi|1477303549478|C:\Users\gur40998\workspace\django-auth-pattern-master\authtest\wsgi.py
+log.apps|1477303549733|C:\Users\gur40998\workspace\django-auth-pattern-master\log\apps.py
+log.forms|1477303549889|C:\Users\gur40998\workspace\django-auth-pattern-master\log\forms.py
+log.urls|1477303550363|C:\Users\gur40998\workspace\django-auth-pattern-master\log\urls.py
+log.tests|1477303550319|C:\Users\gur40998\workspace\django-auth-pattern-master\log\tests.py
+log.admin|1477303549661|C:\Users\gur40998\workspace\django-auth-pattern-master\log\admin.py
+-- END DISKCACHE
+-- START DICTIONARY
+9
+1=authtest.settings
+7=authtest.urls
+3=log.views
+5=log.apps
+2=authtest.wsgi
+6=log.urls
+4=log.forms
+9=LoginForm
+8=LogConfig
+-- END DICTIONARY
+-- START TREE 1
+19
+all|1|ALLOWED_HOSTS!11@
+app|1|application!19@
+aut|1|AUTH_PASSWORD_VALIDATORS!11@
+bas|1|BASE_DIR!11@
+dat|1|DATABASES!11@
+deb|1|DEBUG!11@
+hom|1|home!26@
+ins|1|INSTALLED_APPS!11@
+lan|1|LANGUAGE_CODE!11@
+log|3|LoginForm!33@LOGIN_REDIRECT_URL!11@LogConfig!41@
+mid|1|MIDDLEWARE_CLASSES!11@
+roo|1|ROOT_URLCONF!11@
+sec|1|SECRET_KEY!11@
+sta|2|STATIC_URL!11@STATICFILES_DIRS!11@
+tem|1|TEMPLATES!11@
+tim|1|TIME_ZONE!11@
+url|2|urlpatterns!51@urlpatterns!59@
+use|3|USE_L10N!11@USE_I18N!11@USE_TZ!11@
+wsg|1|WSGI_APPLICATION!11@
+-- END TREE
+-- START TREE 2
+3
+nam|1|name!8&43@
+pas|1|password!9&35@
+use|1|username!9&35@
+-- END TREE

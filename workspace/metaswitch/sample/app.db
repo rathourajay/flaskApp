@@ -1,0 +1,27 @@
+{
+  "ens.latency-test": {
+    "app-metadata": {
+      "microservices": {
+        "latencyresponder": {"exposed": "true", "lifecycle-management": "auto", "init": "on-connect"}
+      }
+    },
+    "microservice-metadata": {
+      "latencyresponder" : {
+        "tenancy": "single",
+        "event": {"workload": "workloadlatencyresponder", "event": "ping"},
+        "workloads": {
+          "workloadlatencyresponder": {
+            "image": "workloadlatencyresponder",
+            "events": {
+              "ping": {"fn": "latencyresponder.event_handler"}
+            },
+            "resources": {
+              "default": {"slices": 1, "block": 0, "kv": 0, "bandwidth": 0.1}
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

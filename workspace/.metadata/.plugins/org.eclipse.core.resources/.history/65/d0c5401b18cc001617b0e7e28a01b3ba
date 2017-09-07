@@ -1,0 +1,31 @@
+#import os
+#import sys
+import json
+#import logging
+import threading
+import flask
+#import httplib
+import requests
+from flask import Flask, request, Response, jsonify
+discovery_server = Flask(__name__)
+
+
+@discovery_server.route("/api/DS", methods=['POST'])
+# @discovery_server.route("/api/DS")
+def register_cloudlets():
+    #url = "https://localhost:5001/api/CR/change_status"
+    cloudlet_id = request.args.get('cloudlet_id')
+    #payload = {"cloudlet_id": cloudlet_id}
+    #resp = requests.get(url, params=payload)
+    # return resp.content
+    ####################
+    data = {
+        'cloudlet_id': cloudlet_id
+    }
+    response = requests.put(
+        "http://localhost:5001/api/CR/change_status", params=data)
+    return_status = response, response.content, cloudlet_id
+   # print response.content
+    ####################
+    return str(return_status)
+discovery_server.run(host="0.0.0.0", port=5000, threaded=True)

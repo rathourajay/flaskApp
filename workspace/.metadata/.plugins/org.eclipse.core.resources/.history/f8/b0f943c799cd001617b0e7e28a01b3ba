@@ -1,0 +1,18 @@
+import flask
+import json
+from flask import Flask, request, Response
+
+dicovery_agent = Flask(__name__)
+
+
+@discovery_agent.route("/cloudletcontroller/cloudlet/v1.5/register", methods=['POST'])
+def register_cloudlet():
+    try:
+        cloudlet_id = request.args.get("cloudlet_id")
+        response = requests.put(
+            "http://localhost:5000/api/DS/registerCloudlet?cloudlet_id=cl13")
+        return response
+    except:
+        return "{error: “Something went wrong. Please try again later.}"
+
+dicovery_agent.run(host="0.0.0.0", port=5002)

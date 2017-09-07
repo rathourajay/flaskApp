@@ -1,0 +1,42 @@
+{
+  "applications": {
+    "ens.latency-test": {
+      "enabled": "Y",
+      "client-regions": ["NA", "EU"],
+      "low-latency": "N"
+    },
+    "dev1.app1": {
+      "enabled": "Y",
+      "client-regions": ["NA", "AS"],
+      "low-latency": "N"
+    }
+  },
+  "cloudlets": {
+    "ens.aws-us-east.edgenet.cloud": {
+      "regions": {"all": ["NA", "SA", "OC"], "low-latency": ["NA", "SA"]},
+      "prob_ip":"197.168.1.1:5107"
+    },
+    "ens.aws-us-west.edgenet.cloud": {
+      "regions": {"all": [], "low-latency": ["NA", "SA"]},
+      "prob_ip":"197.168.1.1:5017"
+    },
+    "ens.aws-eu-ireland.edgenet.cloud": {
+      "regions": {"all": ["EU", "AF"], "low-latency": ["EU"]},
+       "prob_ip":"196.168.1.1:5019"
+    },
+    "ens.aws-eu-frankfurt.edgenet.cloud": {
+      "regions": {"all": [], "low-latency": ["EU"]},
+       "prob_ip":"195.168.1.1:5009"
+    },
+    "ens.aws-as-eastindia.edgenet.cloud": {
+      "regions": {"all": ["AS"], "low-latency": ["AS"]},
+       "prob_ip":"194.168.1.1:5008"
+    },
+    "ens.aws-as-westindia.edgenet.cloud": {
+      "regions": {"all": ["AS"], "low-latency": []},
+       "prob_ip":"193.168.1.1:5007"
+    }
+  }
+}
+
+

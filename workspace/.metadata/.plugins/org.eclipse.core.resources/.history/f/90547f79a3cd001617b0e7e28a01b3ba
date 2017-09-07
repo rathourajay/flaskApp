@@ -1,0 +1,30 @@
+import flask
+import json
+import requests
+from flask import Flask, request, Response
+
+discovery_agent = Flask(__name__)
+
+
+@discovery_agent.route("/cloudletcontroller/cloudlet/v1.5/register", methods=['POST'])
+def init_register_cloudlet():
+    try:
+        #import pdb
+        # pdb.set_trace()
+        cloudlet_id = request.args.get("cloudlet_id")
+        print "cloudlet_id:", cloudlet_id
+        data = {
+            'cloudlet_id': cloudlet_id
+        }
+        jdata = json.dumps(data)
+        response = requests.put(
+            "http://localhost:5000/api/DS/registerCloudlet?cloudlet_id=cl13", param=jdata)
+
+        print "response:", response
+        return response
+    except:
+        response = "{error:Something went wrong. Please try again later.}"
+        print "response:", response
+        return response
+
+discovery_agent.run(host="0.0.0.0", port=5002)

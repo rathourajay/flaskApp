@@ -1,0 +1,7 @@
+MODULES_MANAGER_V2
+manage|C:\Users\gur40998\workspace\simple-django-auth-example-master\manage.py
+simpleauthexample.__init__|C:\Users\gur40998\workspace\simple-django-auth-example-master\simpleauthexample\__init__.py
+simpleauthexample.settings|C:\Users\gur40998\workspace\simple-django-auth-example-master\simpleauthexample\settings.py
+simpleauthexample.urls|C:\Users\gur40998\workspace\simple-django-auth-example-master\simpleauthexample\urls.py
+simpleauthexample.views|C:\Users\gur40998\workspace\simple-django-auth-example-master\simpleauthexample\views.py
+simpleauthexample.wsgi|C:\Users\gur40998\workspace\simple-django-auth-example-master\simpleauthexample\wsgi.py

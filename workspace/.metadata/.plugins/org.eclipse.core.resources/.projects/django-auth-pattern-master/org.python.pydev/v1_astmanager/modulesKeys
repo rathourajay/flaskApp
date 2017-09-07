@@ -1,0 +1,15 @@
+MODULES_MANAGER_V2
+authtest.__init__|C:\Users\gur40998\workspace\django-auth-pattern-master\authtest\__init__.py
+authtest.settings|C:\Users\gur40998\workspace\django-auth-pattern-master\authtest\settings.py
+authtest.urls|C:\Users\gur40998\workspace\django-auth-pattern-master\authtest\urls.py
+authtest.wsgi|C:\Users\gur40998\workspace\django-auth-pattern-master\authtest\wsgi.py
+log.__init__|C:\Users\gur40998\workspace\django-auth-pattern-master\log\__init__.py
+log.admin|C:\Users\gur40998\workspace\django-auth-pattern-master\log\admin.py
+log.apps|C:\Users\gur40998\workspace\django-auth-pattern-master\log\apps.py
+log.forms|C:\Users\gur40998\workspace\django-auth-pattern-master\log\forms.py
+log.migrations.__init__|C:\Users\gur40998\workspace\django-auth-pattern-master\log\migrations\__init__.py
+log.models|C:\Users\gur40998\workspace\django-auth-pattern-master\log\models.py
+log.tests|C:\Users\gur40998\workspace\django-auth-pattern-master\log\tests.py
+log.urls|C:\Users\gur40998\workspace\django-auth-pattern-master\log\urls.py
+log.views|C:\Users\gur40998\workspace\django-auth-pattern-master\log\views.py
+manage|C:\Users\gur40998\workspace\django-auth-pattern-master\manage.py

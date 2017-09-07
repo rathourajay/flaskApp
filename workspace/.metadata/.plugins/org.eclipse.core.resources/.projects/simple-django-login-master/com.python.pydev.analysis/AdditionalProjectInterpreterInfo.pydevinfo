@@ -1,0 +1,43 @@
+-- VERSION_4
+-- START DISKCACHE
+C:\Users\gur40998\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\simple-django-login-master\com.python.pydev.analysis\v2_indexcache
+login.wsgi|1477306498427|C:\Users\gur40998\workspace\simple-django-login-master\login\wsgi.py
+login.views|1477390062066|C:\Users\gur40998\workspace\simple-django-login-master\login\views.py
+login.urls|1477389929632|C:\Users\gur40998\workspace\simple-django-login-master\login\urls.py
+login.__init__|1477306498341|C:\Users\gur40998\workspace\simple-django-login-master\login\__init__.py
+manage|1477306498331|C:\Users\gur40998\workspace\simple-django-login-master\manage.py
+login.settings|1477306498355|C:\Users\gur40998\workspace\simple-django-login-master\login\settings.py
+-- END DISKCACHE
+-- START DICTIONARY
+4
+4=login.urls
+3=login.views
+2=login.wsgi
+1=login.settings
+-- END DICTIONARY
+-- START TREE 1
+20
+all|1|ALLOWED_HOSTS!11@
+app|1|application!19@
+aut|1|AUTH_PASSWORD_VALIDATORS!11@
+bas|1|BASE_DIR!11@
+dat|1|DATABASES!11@
+deb|1|DEBUG!11@
+get|1|get_server_response!26@
+gma|1|gmail_scanner!26@
+ins|1|INSTALLED_APPS!11@
+lan|1|LANGUAGE_CODE!11@
+log|1|LOGIN_REDIRECT_URL!11@
+mid|1|MIDDLEWARE_CLASSES!11@
+roo|1|ROOT_URLCONF!11@
+sec|1|SECRET_KEY!11@
+sta|1|STATIC_URL!11@
+tem|1|TEMPLATES!11@
+tim|1|TIME_ZONE!11@
+url|1|urlpatterns!35@
+use|3|USE_TZ!11@USE_L10N!11@USE_I18N!11@
+wsg|1|WSGI_APPLICATION!11@
+-- END TREE
+-- START TREE 2
+0
+-- END TREE

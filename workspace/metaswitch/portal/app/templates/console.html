@@ -1,0 +1,22 @@
+{% extends "layout_closed.html" %}
+{% block content %}
+  <div class="console-app-list">
+    <div class="heading">
+      <div class="edit"></div><div class="name">Application Name</div><div class="status">Status</div><div class="placement">Placement</div>
+    </div>
+    <div class="table">
+      {% for application in applications %}
+      <div class="table-row">
+         <div class="edit">
+           {% if application.available %}
+           <a class="button" href="/console/application?id={{ application.id }}">Update</a>
+           {% endif %}
+         </div>
+         <div class="name">{{ application.name }}</div>
+         <div class="status">{{ "enabled" if application.enabled else "disabled" }}</div>
+         <div class="placement">{{ application.placement }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

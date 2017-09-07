@@ -1,0 +1,21 @@
+-- VERSION_4
+-- START DISKCACHE
+C:\Users\gur40998\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\test_csrf\com.python.pydev.analysis\v2_indexcache
+views|1449832541920|C:\Users\gur40998\workspace\test_csrf\views.py
+-- END DISKCACHE
+-- START DICTIONARY
+1
+1=views
+-- END DICTIONARY
+-- START TREE 1
+6
+bas|1|base_url!11@
+cur|1|cursor!11@
+dat|1|database!11@
+get|4|getText!10@get_document_link!10@get_parsed_source!10@get_xbrlmain!10@
+pro|1|PROJECT_PATH!11@
+sel|1|select_commaseperated!10@
+-- END TREE
+-- START TREE 2
+0
+-- END TREE

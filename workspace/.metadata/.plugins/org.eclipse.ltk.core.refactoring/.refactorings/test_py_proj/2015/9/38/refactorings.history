@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;test_py_proj/new_json.txt&apos; to &apos;new_json.json&apos;" description="Rename resource &apos;new_json.txt&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="new_json.txt" name="new_json.json" stamp="1442481339678" updateReferences="true"/>
+</session>

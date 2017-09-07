@@ -1,0 +1,776 @@
+[{
+	"applicationName": "ens.latency-test",
+	"userId": "markMiller",
+	"icon": "icon.png",
+	"regions": [
+		"NA",
+		"EU"
+	],
+	"rating": 5,
+	"category": "OCR",
+	"owner": "Mark Miller", 
+	"releaseDate": "17-Jan-2016",
+	"description": "OCR Microservice Description",
+	"documentation": "URL of User Manual",
+	"onBoardStatus": "Pending",
+	"enable": "True",
+	"contextPath": "/dtedge/index.html",
+	"applicationType": "Event",
+	"stage": "Build/Certify",
+	"lowLatency": "Y",
+	"appAtCloudUrl": "http://127.0.0.1:65000",
+	"metadata": {
+		"appMetadata": {
+		    "applicationType": "Event",
+			"microservices": [{
+					"microServiceName": "service-time",
+					"useAsLib": "Y",
+					"subscribed":"Y",
+					"exposed": {
+						"network": [
+						{
+							"name": "time",
+							"exposedTo": ["app@client","<microservice name>","<cidr value>"]
+						},
+						{
+							"name": "time1",
+							"exposedTo": ["app@client","<microservice name>","<cidr value>"]
+						}],
+						"events": [{
+							"name": "time-api",
+							"exposedTo": ["app@client","<microservice name>","<cidr value>"]
+						}]
+					},
+					"resources":  [{
+							"name": "sample-profile",
+							"workloadName": "workloadName1"
+						}]
+				}
+
+			]
+		},
+		"microserviceMetadata": [
+             	{ 
+			    "microServiceName":"service-time",
+			    "tenancy": "single",
+			    "metadata":{
+					"external": {
+						"events": [
+					 		"time-api"
+						],
+						"httpApis": [
+							"service-time.context1"
+						],
+						"networks": [
+							"time"
+						]
+					},
+					
+					"workloads": [{
+						"workloadName": "service-time",
+						"image":"anuyog27/service-time",
+						"source": {
+							"username": "markmiller",
+							"password": "abcd1234",
+							"sourceRepo": "GitHub/Bitbucket",
+							"path": "Path to source code"
+						},
+						"events": [
+
+							{
+								"name": "time-api",
+								"reference": "fn:/time"
+							}
+						],
+						"networks": [{
+							"name": "time",
+							"port": "10004",
+							"protocol": "udp"
+						}, {
+							"name": "time1",
+							"port": "10003",
+							"protocol": "tcp"
+						}],
+
+						"httpApis": {
+							"port": "80",
+							"endpoints": [{
+								"name": "service-time.context1",
+								"contextPath": "/time"
+							},
+							{
+								"name": "service-time.context2",
+								"contextPath": "/contacts"
+							}]
+
+						},
+						"resources": [{
+								"name": "sample-profile",
+								"cpu": "252m",
+								"memory": "258Mi",
+								"storage": "10",
+								"bandwidth": "4"
+							}]
+					}]
+      
+			    }
+              }
+
+
+			]
+		
+	}
+
+},
+{
+	"applicationName": "mec.echo-server",
+	"userId": "markMiller",
+	"icon": "icon.png",
+	"regions": [
+		"NA",
+		"AS"
+	],
+	"rating": 5,
+	"category": "OCR",
+	"owner": "Mark Miller", 
+	"releaseDate": "17-Jan-2016",
+	"description": "OCR Microservice Description",
+	"documentation": "URL of User Manual",
+	"onBoardStatus": "Pending",
+	"enable": "True",
+	"contextPath": "/dtedge/index.html",
+	"applicationType": "Event",
+	"stage": "Build/Certify",
+	"lowLatency": "N",
+	"appAtCloudUrl": "http://127.0.0.1:65000",
+	"metadata": {
+		"appMetadata": {
+		    "applicationType": "Event",
+			"microservices": [{
+					"microServiceName": "service-time",
+					"useAsLib": "Y",
+					"subscribed":"Y",
+					"exposed": {
+						"network": [
+						{
+							"name": "time",
+							"exposedTo": ["app@client","<microservice name>","<cidr value>"]
+						},
+						{
+							"name": "time1",
+							"exposedTo": ["app@client","<microservice name>","<cidr value>"]
+						}],
+						"events": [{
+							"name": "time-api",
+							"exposedTo": ["app@client","<microservice name>","<cidr value>"]
+						}]
+					},
+					"resources":  [{
+							"name": "sample-profile",
+							"workloadName": "workloadName1"
+						}]
+				}
+
+			]
+		},
+		"microserviceMetadata": [
+             	{ 
+			    "microServiceName":"service-time",
+			    "tenancy": "single",
+			    "metadata":{
+					"external": {
+						"events": [
+					 		"time-api"
+						],
+						"httpApis": [
+							"service-time.context1"
+						],
+						"networks": [
+							"time"
+						]
+					},
+					
+					"workloads": [{
+						"workloadName": "service-time",
+						"image":"anuyog27/service-time",
+						"source": {
+							"username": "markmiller",
+							"password": "abcd1234",
+							"sourceRepo": "GitHub/Bitbucket",
+							"path": "Path to source code"
+						},
+						"events": [
+
+							{
+								"name": "time-api",
+								"reference": "fn:/time"
+							}
+						],
+						"networks": [{
+							"name": "time",
+							"port": "10004",
+							"protocol": "udp"
+						}, {
+							"name": "time1",
+							"port": "10003",
+							"protocol": "tcp"
+						}],
+
+						"httpApis": {
+							"port": "80",
+							"endpoints": [{
+								"name": "service-time.context1",
+								"contextPath": "/time"
+							},
+							{
+								"name": "service-time.context2",
+								"contextPath": "/contacts"
+							}]
+
+						},
+						"resources": [{
+								"name": "sample-profile",
+								"cpu": "254m",
+								"memory": "260Mi",
+								"storage": "10",
+								"bandwidth": "4"
+							}]
+					}]
+      
+			    }
+              }
+
+
+			]
+		
+	}
+
+},
+{
+	"applicationName": "mec.sample-app",
+	"userId": "markMiller",
+	"icon": "icon.png",
+	"regions": [
+		"NA",
+		"AS"
+	],
+	"rating": 5,
+	"category": "OCR",
+	"owner": "Mark Miller", 
+	"releaseDate": "17-Jan-2016",
+	"description": "OCR Microservice Description",
+	"documentation": "URL of User Manual",
+	"onBoardStatus": "Pending",
+	"enable": "True",
+	"contextPath": "/dtedge/index.html",
+	"applicationType": "Event",
+	"stage": "Build/Certify",
+	"lowLatency": "Y",
+	"appAtCloudUrl": "http://127.0.0.1:65000",
+	"metadata": {
+		"appMetadata": {
+		    "applicationType": "Event",
+			"microservices": [{
+					"microServiceName": "service-time",
+					"useAsLib": "Y",
+					"subscribed":"Y",
+					"exposed": {
+						"network": [
+						{
+							"name": "time",
+							"exposedTo": ["app@client","<microservice name>","<cidr value>"]
+						},
+						{
+							"name": "time1",
+							"exposedTo": ["app@client","<microservice name>","<cidr value>"]
+						}],
+						"events": [{
+							"name": "time-api",
+							"exposedTo": ["app@client","<microservice name>","<cidr value>"]
+						}]
+					},
+					"resources":  [{
+							"name": "sample-profile",
+							"workloadName": "workloadName1"
+						}]
+				}
+
+			]
+		},
+		"microserviceMetadata": [
+             	{ 
+			    "microServiceName":"service-time",
+			    "tenancy": "single",
+			    "metadata":{
+					"external": {
+						"events": [
+					 		"time-api"
+						],
+						"httpApis": [
+							"service-time.context1"
+						],
+						"networks": [
+							"time"
+						]
+					},
+					
+					"workloads": [{
+						"workloadName": "service-time",
+						"image":"anuyog27/service-time",
+						"source": {
+							"username": "markmiller",
+							"password": "abcd1234",
+							"sourceRepo": "GitHub/Bitbucket",
+							"path": "Path to source code"
+						},
+						"events": [
+
+							{
+								"name": "time-api",
+								"reference": "fn:/time"
+							}
+						],
+						"networks": [{
+							"name": "time",
+							"port": "10004",
+							"protocol": "udp"
+						}, {
+							"name": "time1",
+							"port": "10003",
+							"protocol": "tcp"
+						}],
+
+						"httpApis": {
+							"port": "80",
+							"endpoints": [{
+								"name": "service-time.context1",
+								"contextPath": "/time"
+							},
+							{
+								"name": "service-time.context2",
+								"contextPath": "/contacts"
+							}]
+
+						},
+						"resources": [{
+								"name": "sample-profile",
+								"cpu": "250m",
+								"memory": "256Mi",
+								"storage": "10",
+								"bandwidth": "4"
+							}]
+					}]
+      
+			    }
+              }
+
+
+			]
+		
+	}
+
+},
+{
+	"applicationName": "mec.new-app",
+	"userId": "markMiller",
+	"icon": "icon.png",
+	"regions": [
+		"NA",
+		"AS"
+	],
+	"rating": 5,
+	"category": "OCR",
+	"owner": "Mark Miller", 
+	"releaseDate": "17-Jan-2016",
+	"description": "OCR Microservice Description",
+	"documentation": "URL of User Manual",
+	"onBoardStatus": "Pending",
+	"enable": "True",
+	"contextPath": "/dtedge/index.html",
+	"applicationType": "Event",
+	"stage": "Build/Certify",
+	"lowLatency": "Y",
+	"appAtCloudUrl": "http://127.0.0.1:65000",
+	"metadata": {
+		"appMetadata": {
+		    "applicationType": "Event",
+			"microservices": [{
+					"microServiceName": "app-todomanager-helper-tz",
+					"useAsLib": "Y",
+					"subscribed":"Y",
+					"exposed": {
+						"network": [
+						{
+							"name": "time-zone",
+							"exposedTo": ["app@client","<microservice name>","<cidr value>"]
+						}],
+						"events": [{
+							"name": "time-zone-api",
+							"exposedTo": ["app@client","<microservice name>","<cidr value>"]
+						}]
+					},
+					"resources":  [{
+							"name": "sample-profile",
+							"workloadName": "workloadName1"
+						}]
+				},
+					{
+					"microServiceName": "service-time",
+					"useAsLib": "Y",
+					"subscribed":"Y",
+					"exposed": {
+						"network": [
+						{
+							"name": "time",
+							"exposedTo": ["app@client","<microservice name>","<cidr value>"]
+						},
+						{
+							"name": "time1",
+							"exposedTo": ["app@client","<microservice name>","<cidr value>"]
+						}],
+						"events": [{
+							"name": "time-api",
+							"exposedTo": ["app@client","<microservice name>","<cidr value>"]
+						}]
+					},
+					"resources":  [{
+							"name": "sample-profile",
+							"workloadName": "workloadName1"
+						}]
+				},
+					{
+					"microServiceName": "app-todomanager",
+					"useAsLib": "Y",
+					"subscribed":"Y",
+					"exposed": {
+						"network": [
+						{
+							"name": "todo-network",
+							"exposedTo": ["app@client","<microservice name>","<cidr value>"]
+						}],
+						"events": [{
+							"name": "todo",
+							"exposedTo": ["app@client","<microservice name>","<cidr value>"]
+						},
+						{
+							"name": "todo-id",
+							"exposedTo": ["app@client","<microservice name>","<cidr value>"]
+						}]
+					},
+					"resources":  [{
+							"name": "sample-profile",
+							"workloadName": "workloadName1"
+						}]
+				}
+
+			]
+		},
+		"microserviceMetadata": [
+             	{ 
+			    "microServiceName":"app-todomanager-helper-tz",
+			    "tenancy": "single",
+			    "metadata":{
+					"external": {
+						"events": [
+					 		"time-zone-api"
+						],
+						"httpApis": [
+							"app-todomanager-helper-tz.context1"
+						],
+						"networks": [
+							"time-zone"
+						]
+					},
+					
+					"workloads": [{
+						"workloadName": "app-todomanager-helper-tz",
+						"image":"anuyog27/app-todomanager-helper-tz",
+						"source": {
+							"username": "markmiller",
+							"password": "abcd1234",
+							"sourceRepo": "GitHub/Bitbucket",
+							"path": "Path to source code"
+						},
+						"events": [
+
+							{
+								"name": "time-zone-api",
+								"reference": "fn:/tz"
+							}
+						],
+						"networks": [{
+							"name": "time-zone",
+							"port": "10002",
+							"protocol": "tcp"
+						}],
+
+						"httpApis": {
+							"port": "80",
+							"endpoints": [{
+								"name": "app-todomanager-helper-tz.context1",
+								"contextPath": "/tz"
+							},
+							{
+								"name": "app-todomanager-helper-tz.context2",
+								"contextPath": "/contacts"
+							}]
+
+						},
+						"resources": [{
+								"name": "sample-profile",
+								"cpu": "250m",
+								"memory": "256Mi",
+								"storage": "10",
+								"bandwidth": "4"
+							}]
+					}]
+      
+			    }
+              },
+	      { 
+			    "microServiceName":"service-time",
+			    "tenancy": "single",
+			    "metadata":{
+					"external": {
+						"events": [
+					 		"time-api"
+						],
+						"httpApis": [
+							"service-time.context1"
+						],
+						"networks": [
+							"time"
+						]
+					},
+					
+					"workloads": [{
+						"workloadName": "service-time",
+						"image":"anuyog27/service-time",
+						"source": {
+							"username": "markmiller",
+							"password": "abcd1234",
+							"sourceRepo": "GitHub/Bitbucket",
+							"path": "Path to source code"
+						},
+						"events": [
+
+							{
+								"name": "time-api",
+								"reference": "fn:/time"
+							}
+						],
+						"networks": [{
+							"name": "time",
+							"port": "10004",
+							"protocol": "udp"
+						},
+						{
+							"name": "time1",
+							"port": "10003",
+							"protocol": "tcp"
+						}],
+
+						"httpApis": {
+							"port": "80",
+							"endpoints": [{
+								"name": "service-time.context1",
+								"contextPath": "/time"
+							},
+							{
+								"name": "service-time.context2",
+								"contextPath": "/contacts"
+							}]
+
+						},
+						"resources": [{
+								"name": "sample-profile",
+								"cpu": "250m",
+								"memory": "256Mi",
+								"storage": "10",
+								"bandwidth": "4"
+							}]
+					}]
+      
+			    }
+              },
+              { 
+			    "microServiceName":"app-todomanager",
+			    "tenancy": "single",
+			    "metadata":{
+					"external": {
+						"events": [
+					 		"todo",
+							"todo_id"
+						],
+						"httpApis": [
+							"app-todomanager.context1"
+						],
+						"networks": [
+							"todo-network"
+						]
+					},
+					
+					"workloads": [{
+						"workloadName": "app-todomanager",
+						"image":"anuyog27/app-todomanager",
+						"source": {
+							"username": "markmiller",
+							"password": "abcd1234",
+							"sourceRepo": "GitHub/Bitbucket",
+							"path": "Path to source code"
+						},
+						"events": [
+
+							{
+								"name": "todo",
+								"reference": "fn:/todo"
+							},
+							{
+								"name": "todo_id",
+								"reference": "fn:/todo/<todo_id>"
+							}						
+						],
+						"networks": [{
+							"name": "todo-network",
+							"port": "6001",
+							"protocol": "tcp"
+						}],
+
+						"httpApis": {
+							"port": "80",
+							"endpoints": [{
+								"name": "app-todomanager.context1",
+								"contextPath": "/todo"
+							},
+							{
+								"name": "app-todomanager.context2",
+								"contextPath": "/contacts"
+							}]
+
+						},
+						"resources": [{
+								"name": "sample-profile",
+								"cpu": "250m",
+								"memory": "256Mi",
+								"storage": "10",
+								"bandwidth": "4"
+							}]
+					}]
+      
+			    }
+              }
+			]		
+	}
+},
+{  
+      "applicationName":"mec.service-time",
+      "userId":"markMiller",
+      "icon":"icon.png",
+      "regions":[  
+         "NA",
+         "AS"
+      ],
+      "rating":5,
+      "category":"OCR",
+      "owner":"Mark Miller",
+      "releaseDate":"17-Jan-2016",
+      "description":"OCR Microservice Description",
+      "documentation":"URL of User Manual",
+      "onBoardStatus":"Pending",
+      "enable":"True",
+      "contextPath":"/dtedge/index.html",
+      "applicationType":"Event",
+      "stage":"Build/Certify",
+      "lowLatency":"Y",
+      "appAtCloudUrl":"tcp://127.0.0.1:65000",
+      "metadata":{  
+         "appMetadata":{  
+            "microservices":[  
+               {  
+                  "microServiceName":"service-time",
+                  "useAsLib":"Y",
+                  "subscribed":"N",
+                  "exposed":{  
+                     "network":[  
+                        {  
+                           "name":"service-time-network",
+                           "exposedTo":[  
+                              "app@client",
+                              "<microservice name>",
+                              "<cidr value>"
+                           ]
+                        }
+                     ],
+                     "events":[]
+                  },
+                  "resources":[  
+                     {  
+                        "name":"default",
+                        "workloadName":"workloadName1"
+                     }
+                  ]
+               }
+            ]
+         },
+         "microserviceMetadata":[  
+            {  
+               "microServiceName":"service-time",
+               "tenancy":"single",
+               "metadata":{  
+                  "external":{  
+                     "events":[],
+                     "httpApis":[  
+                        "service-time.service-time.context1"
+                     ],
+                     "networks":[  
+                        "service-time-network"
+                     ]
+                  },
+                  "workloads":[  
+                     {  
+                        "workloadName":"service-time",
+                        "image":"anuyog27/service-time",
+                        "source":{  
+                           "username":"markmiller",
+                           "password":"abcd1234",
+                           "sourceRepo":"GitHub/Bitbucket",
+                           "path":"Path to source code"
+                        },
+                        "events":[],
+                        "networks":[  
+                           {  
+                              "name":"service-time-network",
+                              "port":"10004",
+                              "protocol":"udp"
+                           },
+                           {  
+                              "name":"service-time-network1",
+                              "port":"10003",
+                              "protocol":"tcp"
+                           }
+                        ],
+                        "httpApis":{  
+                           "port":"80",
+                           "endpoints":[  
+                              {  
+                                 "name":"service-time.context1",
+                                 "contextPath":"/time"
+                              }
+                           ]
+                        },
+                        "resources":[  
+                           {  
+                              "name":"default",
+                              "cpu":"250m",
+                              "memory":"256Mi",
+                              "storage":"10",
+                              "bandwidth":"4"
+                           }
+                        ]
+                     }
+                  ]
+               }
+            }
+         ]
+      }
+   }]

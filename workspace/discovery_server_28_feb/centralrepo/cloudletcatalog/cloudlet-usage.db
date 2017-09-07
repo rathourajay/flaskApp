@@ -1,0 +1,29 @@
+{
+ "usage":{
+      "ens.aws-us-west.edgenet.cloud":{    
+            "storage":"50",
+            "cpu":"5",
+            "memory":"23"
+         },
+      "ens.aws-eu-ireland.edgenet.cloud":{    
+            "storage":"50",
+            "cpu":"9",
+            "memory":"23"
+         },
+      "ens.aws-as-eastindia.edgenet.cloud":{    
+            "storage":"50",
+            "cpu":"8",
+            "memory":"23"
+         },
+      "ens.aws-as-westindia.edgenet.cloud":{    
+            "storage":"50",
+            "cpu":"5",
+            "memory":"23"
+         },
+      "ens.aws-eu-frankfurt.edgenet.cloud":{    
+            "storage":"50",
+            "cpu":"5",
+            "memory":"23"
+         }
+	}
+}

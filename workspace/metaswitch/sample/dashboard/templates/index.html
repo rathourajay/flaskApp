@@ -1,0 +1,85 @@
+<!doctype html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <!-- (C) Metaswitch Networks 2016 -->
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+    <title>{% block title %}ENS Portal{% endblock %}</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="static/favicon.ico" />
+  </head>
+  <!--<body onresize="init_canvas()">-->
+  <!--<body onresize="init_map()>-->
+  <body>
+    <div id="wrapper">
+      <div id="topbar">
+        <div id="topbar-banner">
+          <div id="topbar-title">
+            <a class="logo" href="index">E N S Latency Test Dashboard</a>
+          </div>
+        </div>
+      </div>
+      <div id="content">
+        <!--
+        <canvas id="map"></canvas>
+        -->
+        <div id="map"></div>
+        </div>
+      </div>
+      <div id="footer">
+      </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script>
+       var map;
+
+       function display_probes() {
+         // Get probe data from the server
+         $.getJSON('/probes',
+                   {},
+                   function(probes) {
+                     $.each(probes, function(k,p) {
+                       var color = "red"
+                       if (p["status"] == "active") {
+                         if (p["latency"] <= 0.020) {
+                           color = "#00b300";
+                         } else {
+                           color = "#cc7a00";
+                         }
+                       }
+                       var symbol = {fillColor: color, strokeColor: color, path: google.maps.SymbolPath.CIRCLE, scale: 5};
+                       var info = new google.maps.InfoWindow({content: "<p>" + p["name"] + " : " + (p["latency"] * 1000.0).toFixed(3) + " ms" + "<p>" + p["cloudlet"]});
+                       var marker = new google.maps.Marker({
+                         position: {lat: p["latitude"], lng: p["longitude"]},
+                         icon: symbol,
+                         title: p["name"],
+                         map: map
+                       });
+                       marker.addListener('click', function() {
+                         info.open(map, marker);
+                       });
+                     });
+                   });
+       }
+
+       function init_map() {
+         var mapdiv = document.getElementById("map");
+         //mapdiv.style.height = mapdiv.parentElement.clientHeight;
+         map = new google.maps.Map(mapdiv, {zoom: 3, center: {lat: 0, lng: 0}});
+         display_probes();
+
+         setInterval(
+           function() {
+             display_probes();
+           },
+         1000);
+       }
+
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDR8fhGYqdEDIUMwNKbpGsbPmpS5DCnFk4&callback=init_map">
+    </script>
+  </body>
+</html>

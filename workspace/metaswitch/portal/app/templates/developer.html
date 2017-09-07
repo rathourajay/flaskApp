@@ -1,0 +1,31 @@
+{% extends "layout_closed.html" %}
+{% block content %}
+  <div class="dev-app-list">
+    <div class="button"><a href="/developer/application">Create Application</a></div>
+    <div class="heading">
+      <div class="edit"></div><div class="name">Application Name</div>
+    </div>
+    <div class="table">
+      {% for application in applications %}
+      <div class="table-row">
+        <div class="edit"><a href="/developer/application?id={{ application.id }}">Edit</a></div>
+        <div class="name">{{ application.name }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="dev-ms-list">
+    <div class="button"><a href="/developer/microservice">Create Microservice</a></div>
+    <div class="heading">
+      <div class="edit"></div><div class="name">Microservice Name</div>
+    </div>
+    <div class="table">
+      {% for microservice in microservices %}
+      <div class="table-row">
+        <div class="edit button"><a href="/developer/microservice?id={{ microservice.id }}">Edit</a></div>
+        <div class="name">{{ microservice.name }}</div></li>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

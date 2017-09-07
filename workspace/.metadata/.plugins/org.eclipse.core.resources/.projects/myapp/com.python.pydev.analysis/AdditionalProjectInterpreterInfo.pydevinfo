@@ -1,0 +1,59 @@
+-- VERSION_4
+-- START DISKCACHE
+C:\Users\gur40998\workspace\.metadata\.plugins\org.eclipse.core.resources\.projects\myapp\com.python.pydev.analysis\v2_indexcache
+login.migrations.__init__|1486021539680|C:\Users\gur40998\workspace\myapp\login\migrations\__init__.py
+login.admin|1486028986165|C:\Users\gur40998\workspace\myapp\login\admin.py
+myapp.settings|1486026458426|C:\Users\gur40998\workspace\myapp\myapp\settings.py
+login.tests|1486021539664|C:\Users\gur40998\workspace\myapp\login\tests.py
+login.models|1486021539664|C:\Users\gur40998\workspace\myapp\login\models.py
+manage|1486026468891|C:\Users\gur40998\workspace\myapp\manage.py
+myapp.urls|1486026178728|C:\Users\gur40998\workspace\myapp\myapp\urls.py
+login.views|1486022080423|C:\Users\gur40998\workspace\myapp\login\views.py
+login.forms|1486022053256|C:\Users\gur40998\workspace\myapp\login\forms.py
+myapp.wsgi|1486026388881|C:\Users\gur40998\workspace\myapp\myapp\wsgi.py
+heartbeat|1487072719643|C:\Users\gur40998\workspace\myapp\heartbeat.py
+myapp.__init__|1486021477717|C:\Users\gur40998\workspace\myapp\myapp\__init__.py
+login.__init__|1486026477708|C:\Users\gur40998\workspace\myapp\login\__init__.py
+-- END DISKCACHE
+-- START DICTIONARY
+7
+7=RegistrationForm
+4=login.views
+5=login.forms
+2=myapp.wsgi
+3=heartbeat
+1=myapp.settings
+6=myapp.urls
+-- END DICTIONARY
+-- START TREE 1
+22
+all|1|ALLOWED_HOSTS!11@
+app|1|application!19@
+bas|1|BASE_DIR!11@
+cal|1|callapi!26@
+com|0|
+dat|1|DATABASES!11@
+deb|1|DEBUG!11@
+dja|0|
+hom|1|home!34@
+ins|1|INSTALLED_APPS!11@
+lan|1|LANGUAGE_CODE!11@
+log|1|logout_page!34@
+mid|1|MIDDLEWARE_CLASSES!11@
+reg|3|RegistrationForm!41@register!34@register_success!34@
+roo|1|ROOT_URLCONF!11@
+sec|1|SECRET_KEY!11@
+sta|1|STATIC_URL!11@
+tem|1|TEMPLATES!11@
+tim|1|TIME_ZONE!11@
+url|1|urlpatterns!51@
+use|3|USE_L10N!11@USE_TZ!11@USE_I18N!11@
+wsg|1|WSGI_APPLICATION!11@
+-- END TREE
+-- START TREE 2
+4
+cle|2|clean_username!7&42@clean!7&42@
+ema|1|email!7&43@
+pas|2|password1!7&43@password2!7&43@
+use|1|username!7&43@
+-- END TREE

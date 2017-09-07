@@ -1,0 +1,24 @@
+admin_user = 'neutron'
+db_pwd = 'abcd'
+with open('input_data.conf', 'r') as file:
+    data = file.readlines()
+    cnt = 0
+    flag = False
+    for item in data:
+        if item.startswith('db_user_id') or item.startswith('db_pwd'):
+            if flag:
+                item = 'db_pwd = '
+                item += ''.join(db_pwd)
+            else:
+                item = 'db_user_id = '
+                item += ''.join(admin_user)
+                if 'db_user_id' in item:
+                    flag = True
+                continue
+        cnt += 1
+        
+item = item + '\n'
+data[cnt] = item
+with open('input_data.conf', 'w') as file:
+    file.writelines(data)
+    file.writelines('\n')

@@ -1,0 +1,391 @@
+from flask import Flask, request, Response, abort
+import requests
+import json
+import sys
+import threading
+import httplib
+import logging
+from functools import wraps
+from iam_proxy import OAuthToken, IAMProxy, TokenManager
+
+
+MEC_APP_CATALOG_IP = "localhost"
+MEC_APP_CATALOG_PORT = 0xecb9
+
+MEC_CLOUDLET_CATALOG_IP = "localhost"
+MEC_CLOUDLET_CATALOG_PORT = 0xecba
+
+MEC_MICROSERVICE_CATALOG_IP = "localhost"
+MEC_MICROSERVICE_CATALOG_PORT = 0xecbb
+MEC_IAM_PORT = 0x4E2A
+MEC_IAM_IP = "localhost"
+#MEC_CMS_PORT = 0xed02
+MEC_CMS_PORT = 0x17d2
+
+cms = Flask(__name__)
+MODULE_NAME = 'CMS'
+CLOUDLET_CATALOG_URI = '/api/v1.0/centralrepo/cloudletcatalog/'
+APP_CATALOG_URI = '/api/v1.0/centralrepo/appcatalog/'
+MICRO_SVC_CATALOG_URI = '/api/v1.0/centralrepo/microservicecatalog/'
+IAM_URL_PATTERN = "http://%s:%d" % (MEC_IAM_IP, MEC_IAM_PORT)
+SELF_HOSTED_AT = '/api/v1.0/llo/cms'
+SELF_USER = 'cloud_api_admin'
+SELF_PASSWORD = 'admin123'
+# Initialize connections with IAM
+iam_proxy = None
+token_manager = None
+IAM_PLUGGED_IN = True
+
+
+def init_IAM_connections():
+    # Return immediately if IAM proxy is not plugged in
+    if(not IAM_PLUGGED_IN):
+        return
+
+    global iam_proxy, token_manager
+    iam_proxy = IAMProxy(IAM_URL_PATTERN)
+
+    # Register Self with IAM
+    self_hosted_endpoint = SELF_HOSTED_URL_PATTERN
+    target_apis = [
+        CLOUDLET_CATALOG_URI, APP_CATALOG_URI, MICRO_SVC_CATALOG_URI]
+    token = iam_proxy.register_module(MODULE_NAME,
+                                      self_hosted_endpoint, target_apis, SELF_USER, SELF_PASSWORD)
+
+    if(token.get_status() == True):
+        logging.info('%s registered successfully with IAM'
+                     % (MODULE_NAME))
+        logging.debug('Access token received: {}'
+                      .format(token.get_access_token()))
+    else:
+        logging.error('%s failed to register with IAM'
+                      % (MODULE_NAME))
+        logging.error('error: {}'
+                      .format(token.get_errorjson()))
+
+    # Start Token Management
+
+    token_manager = TokenManager(token.get_access_token(),
+                                 token.get_refresh_token(), token.get_expiry(), iam_proxy)
+
+    token_manager.start()
+
+
+# IAM Token Validation decorator
+# TODO - To be replaced with a parameterized decorator
+def iam_token_validate(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        global iam_proxy
+        if not 'Authorization' in request.headers:
+            # Abort
+            auth_failure_response = {"error_code": "401",
+                                     "error_message": "Authorization Required"}
+            return Response(json.dumps(auth_failure_response),
+                            mimetype='application/json',
+                            status=httplib.UNAUTHORIZED)
+
+        bearer_data = request.headers['Authorization']\
+            .encode('ascii', 'ignore')
+        bearer_token = str.replace(str(bearer_data), 'Bearer ', '')
+
+        # Get IAM module to validate the token
+        token = iam_proxy.is_token_valid(bearer_token)
+        if(token.get_status() == True):
+            return f(*args, **kwargs)
+        else:
+            # Abort
+            return Response(json.dumps(token.get_errorjson()),
+                            mimetype='application/json',
+                            status=httplib.UNAUTHORIZED)
+    return decorated_function
+
+
+def iam_discovery_token_validate_stub(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if not 'Authorization' in request.headers:
+            logging.error("Request missing Authorization Token")
+            abort(401)
+
+        bearer_data = request.headers[
+            'Authorization'].encode('ascii', 'ignore')
+        bearer_token = str.replace(str(bearer_data), 'Bearer ', '')
+        # Get IAM module to validate the token
+        IAM_STUB_API_VERSION = 'v1.5'
+        IAM_TOKEN_VALIDATE_URI = "/identity/%s/discoverytoken/" % (
+            IAM_STUB_API_VERSION)
+        IAM_ENDPOINT = "http://%s:%s" % (MEC_IAM_IP, MEC_IAM_PORT)
+
+        token_validate_url = IAM_ENDPOINT + \
+            IAM_TOKEN_VALIDATE_URI + bearer_token
+        logging.info("Validating Token {} %s" % format(bearer_token))
+
+        response = requests.get(token_validate_url)
+        if(response.status_code == 200):
+            return f(bearer_token, *args, **kwargs)
+        else:
+            abort(response.status_code)
+    return decorated_function
+
+
+class CentralRepoHelper():
+
+    def __init__(self):
+        self.lock = threading.Lock()
+
+    def load_db(self):
+        self.db = None
+        try:
+            url = "http://%s:%d/api/v1.0/centralrepo/cloudletcatalog/cloudlets" % (
+                MEC_CLOUDLET_CATALOG_IP, MEC_CLOUDLET_CATALOG_PORT)
+            db_data = requests.get(url)
+            logging.info("Loading cloudlets database")
+            self.db = json.loads(db_data.content)
+        except:
+            return Response(response="CLOUDLET-DISCOVERY INTERNAL_SERVER_ERROR",
+                            status=httplib.INTERNAL_SERVER_ERROR)
+
+    def find_cloudlets_with_env(self, environment):
+        cloudlets_with_env = {}
+        cloudlets_with_env['cloudlets'] = []
+        self.load_db()
+        cloudlets = self.db['cloudlets']
+        for cloudlet in cloudlets:
+            if cloudlet['environment'] == environment:
+                return {cloudlet['name']: cloudlet}
+
+
+def verify_and_update_microservice_metadata(metadata):
+    for microservice in metadata['appMetadata']['microservices']:
+        if (microservice["subscribed"] == "Y"):
+            microservice_name = microservice["microServiceName"]
+            url = "http://%s:%d/api/v1.0/centralrepo/microservicecatalog/%s" % (
+                MEC_MICROSERVICE_CATALOG_IP, MEC_MICROSERVICE_CATALOG_PORT, microservice_name)
+            response = requests.get(url)
+            microservice_metadata = json.loads(response.text)
+            metadata["microserviceMetadata"].append(microservice_metadata)
+    return metadata
+
+
+@cms.route('/api/v1.0/llo/cms/<developer_id>/<app_id>/<cloudlet_id>', methods=['POST'])
+def provision_application(developer_id, app_id, cloudlet_id):
+    client_id = ""
+    # Get application metadata
+    url = "http://%s:%d/api/v1.0/centralrepo/appcatalog/%s.%s" % (
+        MEC_APP_CATALOG_IP, MEC_APP_CATALOG_PORT, developer_id, app_id)
+    response = requests.get(url)
+    data = json.loads(response.text)
+    metadata = verify_and_update_microservice_metadata(data['metadata'])
+    # Get cloudlet details from central repository based on cloudlet_id
+    url = "http://%s:%d/api/v1.0/centralrepo/cloudletcatalog/%s" % (
+        MEC_CLOUDLET_CATALOG_IP, MEC_CLOUDLET_CATALOG_PORT, cloudlet_id)
+    resp = requests.get(url)
+    data = json.loads(resp.text)
+    ip = None
+    port = None
+    for endpoint in data['endpoints']:
+        if endpoint['name'] == 'clc':
+            ip = endpoint['ip']
+            port = endpoint['port']
+
+    # Call provision api of cloudlet controller with payload as metadata
+    payload = {app_id: metadata, "client_id": client_id}
+    headers = {'content-type': 'application/json'}
+    url = "http://%s:%s/api/v1.0/clc/%s/%s" % (
+        str(ip), str(port), developer_id, app_id)
+    response = requests.post(url, data=json.dumps(payload), headers=headers)
+    if response.status_code == 200:
+        return response.text
+    else:
+        return Response(status=response.status_code)
+
+
+@cms.route('/api/v1.0/llo/cms/sandbox/<developer_id>/<app_id>')
+def provision_application_sandbox(developer_id, app_id):
+    client_id = ""
+    # Get application metadata
+    url = "http://%s:%d/api/v1.0/centralrepo/appcatalog/%s.%s" % (
+        MEC_APP_CATALOG_IP, MEC_APP_CATALOG_PORT, developer_id, app_id)
+    response = requests.get(url)
+    data = json.loads(response.text)
+    metadata = data['metadata']
+
+    # Get staging cloudlet details from central repository
+    central_repo_obj = CentralRepoHelper()
+    cloudlets_with_env_staging = central_repo_obj.find_cloudlets_with_env(
+        "Staging")
+    for key in cloudlets_with_env_staging:
+        cloudlet_id = key
+        ip = None
+        port = None
+        for endpoint in cloudlets_with_env_staging[key]['endpoints']:
+            if endpoint['name'] == 'clc':
+                ip = endpoint['ip']
+                port = endpoint['port']
+
+    # Call provision api of cloudlet controller with payload as metadata
+    payload = {app_id: metadata, "client_id": client_id}
+    headers = {'content-type': 'application/json'}
+    url = "http://%s:%s/api/v1.0/clc/%s/%s" % (
+        str(ip), str(port), developer_id, app_id)
+    response = requests.post(url, data=json.dumps(payload), headers=headers)
+    if response.status_code == 200:
+        return response.text
+    else:
+        return Response(status=response.status_code)
+
+
+@cms.route('/api/v1.0/llo/cms/<developer_id>/<app_id>/<cloudlet_id>/<uuid>', methods=['DELETE'])
+def terminate_application(developer_id, app_id, cloudlet_id, uuid):
+    # Get cloudlet details from central repository based on cloudlet_id
+    url = "http://%s:%d/api/v1.0/centralrepo/cloudletcatalog/%s" % (
+        MEC_CLOUDLET_CATALOG_IP, MEC_CLOUDLET_CATALOG_PORT, cloudlet_id)
+    resp = requests.get(url)
+    data = json.loads(resp.text)
+    ip = None
+    port = None
+    for endpoint in data['endpoints']:
+        if endpoint['name'] == 'clc':
+            ip = endpoint['ip']
+            port = endpoint['port']
+
+    # Call terminate api of cloudlet controller with deployment-id
+    url = "http://%s:%s/api/v1.0/clc/%s/%s/%s" % (
+        str(ip), str(port), developer_id, app_id, uuid)
+    response = requests.delete(url)
+    if response.status_code == 200:
+        return response.text
+    else:
+        return Response(status=response.status_code)
+
+
+@cms.route('/api/v1.0/llo/cms/sandbox/<developer_id>/<app_id>/<uuid>', methods=['DELETE'])
+def terminate_application_sandbox(developer_id, app_id, cloudlet_id, uuid):
+    # Get staging cloudlet details from central repository
+    central_repo_obj = CentralRepoHelper()
+    cloudlets_with_env_staging = central_repo_obj.find_cloudlets_with_env(
+        "Staging")
+    for key in cloudlets_with_env_staging:
+        cloudlet_id = key
+        ip = None
+        port = None
+        for endpoint in cloudlets_with_env_staging[key]['endpoints']:
+            if endpoint['name'] == 'clc':
+                ip = endpoint['ip']
+                port = endpoint['port']
+
+    # Call terminate api of cloudlet controller with deployment-id
+    url = "http://%s:%s/api/v1.0/clc/%s/%s/%s" % (
+        str(ip), str(port), developer_id, app_id, uuid)
+    response = requests.delete(url)
+    if response.status_code == 200:
+        return response.text
+    else:
+        return Response(status=response.status_code)
+
+
+@cms.route('/api/v1.0/llo/cms/<cloudlet_id>/images', methods=['GET'])
+def list_application_images(cloudlet_id):
+    # Get cloudlet details from central repository based on cloudlet_id
+    url = "http://%s:%d/api/v1.0/centralrepo/cloudletcatalog/%s" % (
+        MEC_CLOUDLET_CATALOG_IP, MEC_CLOUDLET_CATALOG_PORT, cloudlet_id)
+    resp = requests.get(url)
+    data = json.loads(resp.text)
+    ip = None
+    port = None
+    for endpoint in data['endpoints']:
+        if endpoint['name'] == 'clc':
+            ip = endpoint['ip']
+            port = endpoint['port']
+
+    # Get uploaded container images detail from cloudlet
+    url = "http://%s:%s/api/v1.0/clc/images" % (ip, port)
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.text
+    else:
+        return Response(status=response.status_code)
+
+
+@cms.route('/api/v1.0/llo/cms/<cloudlet_id>/collectStats', methods=['GET'])
+def collect_stats(cloudlet_id):
+    uuid = request.args.get('uuid')
+    if not uuid:
+        uuid = ""
+
+    # Get cloudlet details from central repository based on cloudlet_id
+    url = "http://%s:%d/api/v1.0/centralrepo/cloudletcatalog/%s" % (
+        MEC_CLOUDLET_CATALOG_IP, MEC_CLOUDLET_CATALOG_PORT, cloudlet_id)
+    resp = requests.get(url)
+    data = json.loads(resp.text)
+    ip = None
+    port = None
+    for endpoint in data['endpoints']:
+        if endpoint['name'] == 'clc':
+            ip = endpoint['ip']
+            port = endpoint['port']
+
+    # Get stats detail from cloudlet controller
+    url = "http://%s:%s/api/v1.0/clc/collectStats?uuid=%s" % (ip, port, uuid)
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.text
+    else:
+        return Response(status=response.status_code)
+
+
+@cms.route('/api/v1.0/llo/cms/events', methods=['POST'])
+def events():
+    eventsdata = request.json['events']
+    repo = eventsdata[0]['target']['repository']
+    tag = None
+    if 'tag' in eventsdata[0]['target']:
+        tag = eventsdata[0]['target']['tag']
+
+    # Get cloudlet details from central repository
+    url = "http://%s:%d/api/v1.0/centralrepo/cloudletcatalog/cloudlets" % (
+        MEC_CLOUDLET_CATALOG_IP, MEC_CLOUDLET_CATALOG_PORT)
+    import pdb
+    pdb.set_trace()
+    auth_header = {'Authorization': str('Bearer ' + token_manager.get_token())}
+    resp = requests.get(url, headers=auth_header)
+    data = json.loads(resp.text)
+    endpoints = []
+    for cloudlet in data['cloudlets']:
+        endpoints.append(data['cloudlets'][cloudlet]['endpoints']['clc'])
+
+    for endpoint in endpoints:
+        # Notify cloud controller for the new image
+        try:
+            payload = {'repository': repo, 'tag': tag}
+            headers = {'content-type': 'application/json'}
+            url = "http://%s:%s/api/v1.0/clc/notify" % (
+                str(endpoint['ip']), str(endpoint['port']))
+            response = requests.post(
+                url, data=json.dumps(payload), headers=headers)
+        except:
+            pass
+    return Response(status=200)
+
+
+if len(sys.argv) < 5:
+    print("Usage: %s <self_fqdn> <app_catalog_ip> <cloudlet_catalog_ip> <microservice_catalog_ip>" %
+          sys.argv[0])
+    sys.exit(1)
+
+SELF_IP = sys.argv[1]
+MEC_APP_CATALOG_IP = sys.argv[2]
+MEC_CLOUDLET_CATALOG_IP = sys.argv[3]
+MEC_MICROSERVICE_CATALOG_IP = sys.argv[4]
+
+if __name__ == '__main__':
+    SELF_HOSTED_URL_PATTERN = "http://%s:%d%s" % (
+        SELF_IP, MEC_CMS_PORT, SELF_HOSTED_AT)
+    # Check if IAM plugin in enabled
+    if IAM_PLUGGED_IN:
+        init_IAM_connections()
+    else:
+        IAM_PLUGGED_IN = False
+
+    cms.run(host="0.0.0.0", port=MEC_CMS_PORT, debug=True, threaded=True)

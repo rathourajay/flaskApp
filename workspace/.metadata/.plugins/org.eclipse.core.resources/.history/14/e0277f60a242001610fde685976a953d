@@ -1,0 +1,14 @@
+# # str1 = '_uuid               : b56dac58-ad39-4784-a6d2-d789e04ee5f3\nMAC                 : "fa:16:3e:1c:75:7c"\nipaddr              : ""\nlocator             : a534ed08-f403-4a5d-afb7-e09714daa715\nlogical_switch      : c29586f3-37a9-4ee0-bae5-725d348d2f78\n',
+# # ' _uuid               : 786dac39-4784-a6d2-d789e04ee5f3\n00C                 : "0a:16:3e:1c:75:0c"\nipaddr              : ""\nlocator             : a534ed08-f403-4a5d-afb7-e09714daa715\nlogical_switch      : c29586f3-37a9-4ee0-bae5-725d348d2f78\n'
+# str1 = '_uuid               : b56dac58-ad39-4784-a6d2-d789e04ee5f3\nMAC                 : "fa:16:3e:1c:75:7c"\nipaddr              : ""\nlocator             : a534ed08-f403-4a5d-afb7-e09714daa715\nlogical_switch      : c29586f3-37a9-4ee0-bae5-725d348d2f78\n'
+# uuid = str1.split('MAC')[0].replace('\n', '').split(':')[1].strip()
+# print uuid
+
+
+# x = []
+# y = False
+#
+# if not x or y:
+#     print "ajay"
+#
+str1 = 'adfdfdslkjflkdsjf \n'

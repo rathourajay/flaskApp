@@ -1,0 +1,25 @@
+{% extends "layout_closed.html" %}
+{% block content %}
+<div class="dev-form">
+{% if action == "Add" %}
+<h2>Create Microservice</h2>
+{% else %}
+<h2>Update Microservice {{ form.name.data }} Configuration</h2>
+{% endif %}
+{% from "_formhelpers.html" import render_field %}
+<form class="form" method="POST" enctype=multipart/form-data>
+  {{ form.csrf_token }}
+  {{ form.id }}
+  <dl>
+  {{ render_field(form.name) }}
+  {{ render_field(form.description) }}
+  {{ render_field(form.metadata) }}
+  {{ render_field(form.available) }}
+  {{ render_field(form.public) }}
+  {{ render_field(form.image) }}
+  {{ render_field(form.categories) }}
+  </dl>
+  <p><input type="submit" value="{{ action }}">
+</form>
+</div>
+{% endblock %}

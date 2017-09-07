@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;django-modalview-master&apos;" deleteContents="true" description="Delete resource &apos;django-modalview-master&apos;" element1="/django-modalview-master" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1435055353231"/>
+</session>

@@ -1,0 +1,4 @@
+import time
+from datetime import datetime
+
+time_since_last_heartbeat = (datetime.now() - heartbeat_dict[cloudlet]).seconds

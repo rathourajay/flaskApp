@@ -1,0 +1,36 @@
+#import os
+#import sys
+import json
+#import logging
+import threading
+import flask
+#import httplib
+import requests
+from flask import Flask, request, Response, jsonify
+discovery_server = Flask(__name__)
+
+
+@discovery_server.route("/api/DS", methods=['POST'])
+def register_cloudlets():
+    try:
+        cloudlet_id = request.args.get('cloudlet_id')
+        #payload = {"cloudlet_id": cloudlet_id}
+        #resp = requests.get(url, params=payload)
+        # return resp.content
+        ####################
+        data = {
+            'cloudlet_id': cloudlet_id
+        }
+        response = requests.put(
+            "http://localhost:5001/api/CR/change_status", params=data)
+
+        status = {"code": "200", "content": response.content}
+        resp = json.dumps(status)
+
+        return resp
+    except:
+
+        return_status = {"code": "500", "error": "internal server error"}
+        resp = json.dumps(return_status)
+    return resp
+discovery_server.run(host="0.0.0.0", port=5000, threaded=True)
